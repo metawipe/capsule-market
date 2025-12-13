@@ -40,6 +40,13 @@ else:
     # SQLite
     engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 
+# Инициализируем базу данных (создаем таблицы если их нет)
+try:
+    Base.metadata.create_all(bind=engine)
+    print("✅ База данных инициализирована")
+except Exception as e:
+    print(f"⚠️ Ошибка инициализации БД: {e}")
+
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 
