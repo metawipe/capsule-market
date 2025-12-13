@@ -102,32 +102,67 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         
         # Создаем инвойс на оплату XTR (Stars)
         # В Telegram Stars используется валюта "XTR"
-        # Сумма в Stars: 1 TON = 2 Stars (примерно), но лучше использовать прямую конвертацию
-        # Для Stars amount указывается в минимальных единицах (1 Star = 1 единица)
-        # Обычно 1 TON ≈ 2 Stars, но для простоты используем 1:1
+        # Сумма в Stars: для Stars amount указывается в минимальных единицах (1 Star = 1 единица)
+        # Конвертация: 50 Stars = 0.46 TON
         stars_amount = int(amount)  # Количество Stars (целое число)
         
-        prices = [LabeledPrice(label=f"Top up {amount} TON", amount=stars_amount)]
+        if stars_amount <= 0:
+            await update.message.reply_text("Amount must be greater than 0")
+            return
+        
+        # Конвертируем Stars в TON для отображения
+        # 50 Stars = 0.46 TON, значит 1 Star = 0.0092 TON
+        ton_amount = stars_amount * 0.46 / 50
+        
+        prices = [LabeledPrice(label=f"Top up {ton_amount:.2f} TON ({stars_amount} Stars)", amount=stars_amount)]
+        
+        print(f"[PAYMENT_BOT] Creating invoice: stars_amount={stars_amount}, ton_amount={ton_amount:.2f}, user_id={update.effective_user.id}")
         
         # Отправляем инвойс
-        await context.bot.send_invoice(
-            chat_id=update.effective_chat.id,
-            title=f"Top up {amount} TON",
-            description=f"Top up your Capsule account with {amount} TON",
-            payload=f"stars_{amount}_{update.effective_user.id}",
-            provider_token=None,  # Для Stars не нужен provider_token
-            currency="XTR",  # Telegram Stars currency
-            prices=prices,
-            start_parameter=f"stars_{amount}",
-        )
+        try:
+            # Для Stars (XTR) нужно использовать специальный формат
+            # provider_token должен быть пустой строкой или None для Stars
+            # ton_amount уже вычислен выше
+            
+            invoice_result = await context.bot.send_invoice(
+                chat_id=update.effective_chat.id,
+                title=f"Top up {ton_amount:.2f} TON",
+                description=f"Pay {stars_amount} Stars to receive {ton_amount:.2f} TON on your Capsule account",
+                payload=f"stars_{stars_amount}_{update.effective_user.id}",
+                provider_token="",  # Для Stars используем пустую строку
+                currency="XTR",  # Telegram Stars currency
+                prices=prices,
+                start_parameter=f"stars_{stars_amount}",
+            )
+            print(f"[PAYMENT_BOT] Invoice sent successfully: {invoice_result}")
+        except Exception as invoice_error:
+            print(f"[PAYMENT_BOT] Error sending invoice: {invoice_error}")
+            import traceback
+            traceback.print_exc()
+            # Показываем более детальную ошибку пользователю
+            error_msg = str(invoice_error)
+            if "Bad Request" in error_msg or "400" in error_msg:
+                await update.message.reply_text(
+                    f"❌ Invalid invoice parameters.\n\n"
+                    f"Error: {error_msg}\n\n"
+                    f"Please try with a different amount or contact support."
+                )
+            else:
+                await update.message.reply_text(
+                    f"❌ Error creating payment invoice: {error_msg}\n\n"
+                    "Please try again later or contact support."
+                )
         
-    except ValueError:
+    except ValueError as ve:
+        print(f"[PAYMENT_BOT] ValueError: {ve}")
         await update.message.reply_text(
             "Invalid amount. Use a number.\n\n"
             "Example: /start stars_500"
         )
     except Exception as e:
-        print(f"Error creating invoice: {e}")
+        print(f"[PAYMENT_BOT] Unexpected error creating invoice: {e}")
+        import traceback
+        traceback.print_exc()
         await update.message.reply_text("Error creating payment invoice. Please try again later.")
 
 async def precheckout_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -150,22 +185,25 @@ async def successful_payment_callback(update: Update, context: ContextTypes.DEFA
         return
     
     try:
-        amount = float(parts[1])
+        stars_amount = float(parts[1])  # Количество Stars, которое заплатил пользователь
         user_id = int(parts[2]) if len(parts) > 2 else update.effective_user.id
         
-        # Генерируем промокод
+        # Конвертируем Stars в TON: 50 Stars = 0.46 TON
+        ton_amount = stars_amount * 0.46 / 50
+        
+        # Генерируем промокод с суммой в TON
         db = get_db()
         promo_code = None
         
         # Генерируем уникальный промокод
         max_attempts = 10
         for _ in range(max_attempts):
-            code = generate_promo_code(amount)
+            code = generate_promo_code(ton_amount)  # Используем TON для генерации промокода
             existing = db.query(PromoCode).filter(PromoCode.code == code).first()
             if not existing:
                 promo_code = PromoCode(
                     code=code,
-                    amount=amount,
+                    amount=ton_amount,  # Сохраняем сумму в TON
                     is_used=False
                 )
                 db.add(promo_code)
@@ -183,7 +221,8 @@ async def successful_payment_callback(update: Update, context: ContextTypes.DEFA
         # Отправляем промокод пользователю
         await update.message.reply_text(
             f"✅ Payment successful!\n\n"
-            f"💰 Amount: {amount} TON\n\n"
+            f"💳 Paid: {int(stars_amount)} Stars\n"
+            f"💰 You will receive: {ton_amount:.2f} TON\n\n"
             f"🎁 Your promo code:\n"
             f"<code>{promo_code.code}</code>\n\n"
             f"Use this code in Capsule to top up your balance.",
