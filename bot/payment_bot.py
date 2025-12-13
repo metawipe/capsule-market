@@ -70,7 +70,8 @@ def generate_promo_code(amount: float) -> str:
     # Генерируем 8 случайных заглавных латинских букв
     random_part = ''.join(random.choices(string.ascii_uppercase, k=8))
     # Добавляем сумму (без точки, только целое число)
-    amount_part = str(int(amount))
+    # Округляем до ближайшего целого, но минимум 1
+    amount_part = str(max(1, round(amount)))
     return f"{random_part}{amount_part}"
 
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):

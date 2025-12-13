@@ -54,3 +54,18 @@ class Transaction(Base):
     # Связи
     user = relationship("User", back_populates="transactions")
 
+
+class PromoCode(Base):
+    __tablename__ = "promo_codes"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    code = Column(String(50), unique=True, index=True, nullable=False)
+    user_id = Column(BigInteger, nullable=True)  # ID пользователя, который использовал промокод
+    amount = Column(Float, nullable=False)  # Сумма пополнения в TON
+    is_used = Column(Boolean, default=False, nullable=False)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    used_at = Column(DateTime(timezone=True), nullable=True)
+    
+    # Связь с транзакцией
+    transaction_id = Column(Integer, nullable=True)
+

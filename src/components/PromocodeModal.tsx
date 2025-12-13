@@ -1,8 +1,16 @@
 import { Modal } from '../ui/Modal'
 import './promocode-modal.css'
-import { hapticSuccess } from '../twa'
+import { hapticSuccess, hapticLight } from '../twa'
 import { useState, useMemo } from 'react'
 import { Toast } from './Toast'
+import { getTelegramUserSafe } from '../twa'
+import { useUserContext } from '../contexts/UserContext'
+
+// Базовый URL API
+const API_BASE_URL = import.meta.env.VITE_API_URL || 
+  (import.meta.env.PROD 
+    ? 'https://capsule-market-production.up.railway.app/api'
+    : '/api')
 
 interface PromocodeModalProps {
   isOpen: boolean
@@ -12,7 +20,10 @@ interface PromocodeModalProps {
 export function PromocodeModal({ isOpen, onClose }: PromocodeModalProps) {
   const [promocode, setPromocode] = useState<string>('')
   const [showToast, setShowToast] = useState(false)
-  const [starsAmount, setStarsAmount] = useState(0)
+  const [toastMessage, setToastMessage] = useState('')
+  const [toastType, setToastType] = useState<'success' | 'error'>('success')
+  const [isLoading, setIsLoading] = useState(false)
+  const { refreshBalance } = useUserContext()
 
   const parsedPromocode = useMemo(() => {
     const trimmed = promocode.trim().toUpperCase()
@@ -28,25 +39,62 @@ export function PromocodeModal({ isOpen, onClose }: PromocodeModalProps) {
     if (!Number.isFinite(amount) || amount <= 0) return null
     
     return {
-      code: codePart,
-      amount: Math.round(amount)
+      code: trimmed, // Используем полный код (8 букв + цифры)
+      amount: amount
     }
   }, [promocode])
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!parsedPromocode) return
-    hapticSuccess()
-    console.log('Promocode activated:', parsedPromocode.code, 'Amount:', parsedPromocode.amount)
     
-    // Показываем уведомление
-    setStarsAmount(parsedPromocode.amount)
-    setShowToast(true)
+    const user = getTelegramUserSafe()
+    if (!user?.id) {
+      hapticLight()
+      setToastMessage('User ID not found')
+      setToastType('error')
+      setShowToast(true)
+      return
+    }
     
-    // Закрываем модалку и очищаем поле
-    setTimeout(() => {
-      onClose()
-      setPromocode('')
-    }, 500)
+    setIsLoading(true)
+    
+    try {
+      const response = await fetch(`${API_BASE_URL}/promo/activate?code=${encodeURIComponent(parsedPromocode.code)}&user_id=${user.id}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ detail: 'Unknown error' }))
+        throw new Error(errorData.detail || 'Failed to activate promo code')
+      }
+      
+      const data = await response.json()
+      hapticSuccess()
+      
+      // Обновляем баланс
+      await refreshBalance()
+      
+      // Показываем уведомление
+      setToastMessage(`Successfully activated! You received ${data.amount.toFixed(2)} TON`)
+      setToastType('success')
+      setShowToast(true)
+      
+      // Закрываем модалку и очищаем поле
+      setTimeout(() => {
+        onClose()
+        setPromocode('')
+      }, 2000)
+    } catch (error: any) {
+      hapticLight()
+      setToastMessage(error.message || 'Failed to activate promo code')
+      setToastType('error')
+      setShowToast(true)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const canSubmit = !!parsedPromocode
@@ -70,16 +118,16 @@ export function PromocodeModal({ isOpen, onClose }: PromocodeModalProps) {
           </div>
           <button
             className="promocode-modal__submit-btn"
-            disabled={!canSubmit}
+            disabled={!canSubmit || isLoading}
             onClick={handleSubmit}
           >
-            Apply
+            {isLoading ? 'Activating...' : 'Apply'}
           </button>
         </div>
       </Modal>
       <Toast
-        message={`Successfully activated! You will receive ${starsAmount} Stars`}
-        type="success"
+        message={toastMessage}
+        type={toastType}
         isVisible={showToast}
         onClose={() => setShowToast(false)}
         duration={4000}

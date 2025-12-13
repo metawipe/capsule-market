@@ -6,7 +6,7 @@ import os
 from dotenv import load_dotenv
 
 from database import get_db, init_db
-from models import User, UserGift, Transaction
+from models import User, UserGift, Transaction, PromoCode
 from schemas import (
     UserResponse, UserCreate, 
     UserGiftResponse, UserGiftCreate,
@@ -293,6 +293,66 @@ async def debug_db(db: Session = Depends(get_db)):
         "database_url_preview": db_url[:50] + "..." if len(db_url) > 50 else db_url if db_url != 'NOT SET' else "NOT SET",
         "total_users": total_users,
         "first_user": user_info
+    }
+
+@app.post("/api/promo/activate")
+async def activate_promo_code(
+    code: str,
+    user_id: int,
+    db: Session = Depends(get_db)
+):
+    """Активация промокода"""
+    # Ищем промокод
+    promo = db.query(PromoCode).filter(PromoCode.code == code.upper()).first()
+    
+    if not promo:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Promo code not found"
+        )
+    
+    if promo.is_used:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Promo code already used"
+        )
+    
+    # Находим или создаем пользователя
+    user = db.query(User).filter(User.user_id == user_id).first()
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="User not found"
+        )
+    
+    # Пополняем баланс TON
+    user.balance_ton += promo.amount
+    
+    # Создаем транзакцию
+    from datetime import datetime
+    transaction = Transaction(
+        user_id=user_id,
+        transaction_type='deposit',
+        amount=promo.amount,
+        currency='TON',
+        status='completed',
+        tx_hash=f"PROMO_{code}"
+    )
+    db.add(transaction)
+    db.commit()
+    db.refresh(transaction)
+    
+    # Отмечаем промокод как использованный
+    promo.is_used = True
+    promo.user_id = user_id
+    promo.used_at = datetime.utcnow()
+    promo.transaction_id = transaction.id
+    db.commit()
+    
+    return {
+        "success": True,
+        "amount": promo.amount,
+        "new_balance": user.balance_ton
     }
 
 @app.get("/health")

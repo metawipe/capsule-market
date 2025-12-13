@@ -1,5 +1,20 @@
 .my-gifts-content {
-  padding: 0 20px 40px;
+  padding: 30px 20px 40px;
+  padding-top: 34px;
+  padding-bottom: 32px;
+}
+
+.my-gifts-content .market-content__grid {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.my-gifts-content .gift-card {
+  margin-top: 0;
+}
+
+.my-gifts-content .gift-card:first-child {
+  margin-top: 0;
 }
 
 .my-gifts-content__title {
@@ -43,8 +58,35 @@
   opacity: 0.8;
 }
 
+.gift-card__withdraw-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
+  background: #1C6EFF;
+  border: none;
+  border-radius: 16px;
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.gift-card__withdraw-btn:active {
+  background: #1556CC;
+}
+
+.gift-card__withdraw-text {
+  font-weight: 600;
+}
+
 @media (max-width: 480px) {
   .my-gifts-content {
     padding: 0 16px 32px;
+    padding-top: 34px;
+    padding-bottom: 32px;
   }
 }

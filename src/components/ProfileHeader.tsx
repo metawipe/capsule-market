@@ -65,9 +65,7 @@ interface ProfileHeaderProps {
 export function ProfileHeader({ activeTab, onTabChange }: ProfileHeaderProps) {
   const [lang, setLang] = useState('en' as Lang)
   const [isBalanceModalOpen, setIsBalanceModalOpen] = useState(false)
-  const [currency, setCurrency] = useState<'ton' | 'stars'>('ton')
   const { balance: tonBalance, refreshBalance } = useUserContext()
-  const [starsBalance] = useState(0)
   const [activeFilter, setActiveFilter] = useState<'collection' | 'backdrop' | 'symbol'>('collection')
   const [showLeftBlur, setShowLeftBlur] = useState(false)
   const [showRightBlur, setShowRightBlur] = useState(false)
@@ -243,15 +241,8 @@ export function ProfileHeader({ activeTab, onTabChange }: ProfileHeaderProps) {
     }
   }
 
-  const toggleCurrency = () => {
-    hapticLight()
-    setCurrency(prev => prev === 'ton' ? 'stars' : 'ton')
-  }
-
-  const displayBalance = currency === 'ton' ? tonBalance : starsBalance
-  const displayBalanceFormatted = currency === 'ton' 
-    ? displayBalance.toFixed(2) 
-    : Math.round(displayBalance).toString()
+  const displayBalance = tonBalance
+  const displayBalanceFormatted = displayBalance.toFixed(2)
 
   const handleFilterClick = (type: 'filters' | 'collection' | 'backdrop' | 'symbol') => {
     hapticLight()
@@ -303,28 +294,6 @@ export function ProfileHeader({ activeTab, onTabChange }: ProfileHeaderProps) {
                       </AnimatePresence>
                     </div>
                   </motion.button>
-                  
-                  <motion.button
-                    className="ph__currency"
-                    aria-label={`Switch to ${currency === 'ton' ? 'Stars' : 'TON'}`}
-                    onClick={toggleCurrency}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <div className="ph__currencyBox">
-                      <AnimatePresence mode="wait" initial={false}>
-                        <motion.div
-                          key={currency}
-                          initial={{ opacity: 0, y: -20, scale: 0.9 }}
-                          animate={{ opacity: 1, y: 0, scale: 1 }}
-                          exit={{ opacity: 0, y: 20, scale: 0.9 }}
-                          transition={{ duration: 0.25, ease: "easeInOut" }}
-                        >
-                          <CurrencyIcon currency={currency} />
-                        </motion.div>
-                      </AnimatePresence>
-                    </div>
-                  </motion.button>
                 </motion.div>
               ) : (
                 <motion.div
@@ -363,13 +332,7 @@ export function ProfileHeader({ activeTab, onTabChange }: ProfileHeaderProps) {
             style={{ cursor: 'pointer' }}
           >
             <span className="ph__tokenWrap">
-              {currency === 'ton' ? (
-                <span className="ph__token ph__token--ton" />
-              ) : (
-                <span className="ph__token ph__token--stars">
-                  <span className="material-icons-round">star</span>
-                </span>
-              )}
+              <span className="ph__token ph__token--ton" />
             </span>
             <span className="ph__amount">{displayBalanceFormatted}</span>
             <button className="ph__add" aria-label="Deposit">+</button>
@@ -620,19 +583,5 @@ function FlagTgs({ iso }: { iso: 'en' | 'ru' }) {
       loop={true}
       autoplay={true}
     />
-  )
-}
-
-function CurrencyIcon({ currency }: { currency: 'ton' | 'stars' }) {
-  return (
-    <div className="ph__currencyIcon">
-      {currency === 'ton' ? (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M19.012 9.201L12.66 19.316a.857.857 0 0 1-1.453-.005L4.98 9.197a1.8 1.8 0 0 1-.266-.943a1.856 1.856 0 0 1 1.882-1.826h10.817c1.033 0 1.873.815 1.873 1.822a1.8 1.8 0 0 1-.274.951M6.51 8.863l4.633 7.144V8.143H6.994c-.48 0-.694.317-.484.72m6.347 7.144l4.633-7.144c.214-.403-.004-.72-.484-.72h-4.149z"/>
-        </svg>
-      ) : (
-        <span className="material-icons-round">star</span>
-      )}
-    </div>
   )
 }
