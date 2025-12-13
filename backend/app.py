@@ -225,6 +225,21 @@ async def root():
     """Health check endpoint"""
     return {"status": "ok", "message": "Capsule Market API is running"}
 
+@app.get("/api")
+async def api_root():
+    """API root endpoint"""
+    return {
+        "status": "ok",
+        "message": "Capsule Market API",
+        "endpoints": {
+            "user": "/api/user/{user_id}",
+            "balance": "/api/user/{user_id}/balance",
+            "gifts": "/api/user/{user_id}/gifts",
+            "purchase": "/api/user/{user_id}/purchase",
+            "transactions": "/api/user/{user_id}/transactions"
+        }
+    }
+
 @app.get("/health")
 async def health():
     """Health check endpoint"""
