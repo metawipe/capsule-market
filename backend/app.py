@@ -27,9 +27,15 @@ app = FastAPI(
 # Настройка CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # В продакшене указать конкретные домены
+    allow_origins=[
+        "https://capsule-market.web.app",
+        "https://capsule-market.firebaseapp.com",
+        "http://localhost:5173",
+        "http://localhost:3000",
+        "*"  # Временно разрешаем все для отладки
+    ],
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
 )
 
