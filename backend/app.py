@@ -79,6 +79,11 @@ async def create_user(user_data: UserCreate, db: Session = Depends(get_db)):
 async def get_balance(user_id: int, db: Session = Depends(get_db)):
     """Получить баланс пользователя"""
     print(f"[API] Getting balance for user_id: {user_id} (type: {type(user_id)})")
+    
+    # Проверяем, сколько всего пользователей в БД
+    total_users = db.query(User).count()
+    print(f"[API] Total users in database: {total_users}")
+    
     user = db.query(User).filter(User.user_id == user_id).first()
     if not user:
         print(f"[API] User {user_id} not found, creating new user")
@@ -88,10 +93,14 @@ async def get_balance(user_id: int, db: Session = Depends(get_db)):
         db.commit()
         db.refresh(user)
     else:
-        print(f"[API] User {user_id} found, balance_ton: {user.balance_ton}")
+        print(f"[API] User {user_id} found:")
+        print(f"  - balance_ton: {user.balance_ton}")
+        print(f"  - balance_stars: {user.balance_stars}")
+        print(f"  - username: {user.username}")
+        print(f"  - created_at: {user.created_at}")
     
     response = BalanceResponse(balance_ton=user.balance_ton, balance_stars=user.balance_stars)
-    print(f"[API] Returning balance: {response.balance_ton} TON")
+    print(f"[API] Returning balance: {response.balance_ton} TON, {response.balance_stars} STARS")
     return response
 
 @app.post("/api/user/{user_id}/deposit", response_model=TransactionResponse)
