@@ -8,29 +8,14 @@ import asyncio
 from typing import Optional
 from datetime import datetime
 
-# Добавляем путь к backend для импорта моделей
-backend_path = os.path.join(os.path.dirname(__file__), '..', 'backend')
-sys.path.insert(0, backend_path)
-
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler, filters
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
 
-# Импортируем модели из backend
-try:
-    from models import User, UserGift, Transaction, Base
-except ImportError:
-    # Если не получается импортировать, пробуем другой путь
-    import importlib.util
-    spec = importlib.util.spec_from_file_location("models", os.path.join(backend_path, "models.py"))
-    models = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(models)
-    User = models.User
-    UserGift = models.UserGift
-    Transaction = models.Transaction
-    Base = models.Base
+# Импортируем модели (теперь они в той же папке bot/)
+from models import User, UserGift, Transaction, Base
 
 # Загружаем переменные окружения
 load_dotenv()
@@ -42,8 +27,12 @@ ADMIN_USER_IDS = os.getenv('ADMIN_USER_IDS', '').split(',')  # Список ID �
 # Подключение к базе данных
 # Для Railway используем DATABASE_URL из переменных окружения
 # Для локальной разработки используем SQLite
-default_db_path = os.path.join(os.path.dirname(__file__), '..', 'backend', 'db.sqlite3')
-DATABASE_URL = os.getenv('DATABASE_URL', f'sqlite:///{os.path.abspath(default_db_path)}')
+DATABASE_URL = os.getenv('DATABASE_URL', '')
+
+if not DATABASE_URL:
+    # Локальная разработка - используем SQLite
+    default_db_path = os.path.join(os.path.dirname(__file__), '..', 'backend', 'db.sqlite3')
+    DATABASE_URL = f'sqlite:///{os.path.abspath(default_db_path)}'
 
 if DATABASE_URL.startswith('postgresql'):
     engine = create_engine(DATABASE_URL)
