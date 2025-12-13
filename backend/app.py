@@ -255,6 +255,40 @@ async def api_root():
         }
     }
 
+@app.get("/api/debug/db")
+async def debug_db(db: Session = Depends(get_db)):
+    """Debug endpoint to check database connection"""
+    import os
+    from database import SQLALCHEMY_DATABASE_URL
+    
+    # Получаем информацию о БД
+    db_url = os.getenv('DATABASE_URL', 'NOT SET')
+    db_type = "PostgreSQL" if SQLALCHEMY_DATABASE_URL.startswith('postgresql') else "SQLite"
+    
+    # Пытаемся получить количество пользователей
+    try:
+        total_users = db.query(User).count()
+        # Получаем первого пользователя для примера
+        first_user = db.query(User).first()
+        user_info = None
+        if first_user:
+            user_info = {
+                "user_id": first_user.user_id,
+                "balance_ton": first_user.balance_ton,
+                "username": first_user.username
+            }
+    except Exception as e:
+        total_users = f"Error: {str(e)}"
+        user_info = None
+    
+    return {
+        "database_type": db_type,
+        "database_url_set": db_url != 'NOT SET',
+        "database_url_preview": db_url[:50] + "..." if len(db_url) > 50 else db_url if db_url != 'NOT SET' else "NOT SET",
+        "total_users": total_users,
+        "first_user": user_info
+    }
+
 @app.get("/health")
 async def health():
     """Health check endpoint"""

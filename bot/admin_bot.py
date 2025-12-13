@@ -33,11 +33,27 @@ if not DATABASE_URL:
     # Локальная разработка - используем SQLite
     default_db_path = os.path.join(os.path.dirname(__file__), '..', 'backend', 'db.sqlite3')
     DATABASE_URL = f'sqlite:///{os.path.abspath(default_db_path)}'
+    print("⚠️ [ADMIN_BOT] DATABASE_URL not set, using SQLite:", DATABASE_URL)
+else:
+    # Скрываем пароль в логах
+    db_url_display = DATABASE_URL
+    if '@' in db_url_display:
+        parts = db_url_display.split('@')
+        if len(parts) == 2:
+            user_pass = parts[0].split('://')
+            if len(user_pass) == 2:
+                protocol = user_pass[0]
+                user_part = user_pass[1]
+                if ':' in user_part:
+                    user = user_part.split(':')[0]
+                    db_url_display = f"{protocol}://{user}:***@{parts[1]}"
+    print(f"✅ [ADMIN_BOT] Using DATABASE_URL: {db_url_display}")
 
 if DATABASE_URL.startswith('postgresql'):
+    print("✅ [ADMIN_BOT] Using PostgreSQL")
     engine = create_engine(DATABASE_URL)
 else:
-    # SQLite
+    print("⚠️ [ADMIN_BOT] Using SQLite (local development)")
     engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 
 # Инициализируем базу данных (создаем таблицы если их нет)
@@ -141,7 +157,14 @@ async def balance_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
             db.refresh(user)
         
         # Пополняем баланс
+        old_balance = user.balance_ton
         user.balance_ton += amount
+        
+        print(f"[ADMIN_BOT] Updating balance for user {user_id}:")
+        print(f"  - Old balance: {old_balance}")
+        print(f"  - Adding: {amount}")
+        print(f"  - New balance: {user.balance_ton}")
+        print(f"  - Database URL: {DATABASE_URL[:50]}..." if len(DATABASE_URL) > 50 else f"  - Database URL: {DATABASE_URL}")
         
         # Создаем транзакцию
         transaction = Transaction(
@@ -154,6 +177,9 @@ async def balance_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         db.add(transaction)
         db.commit()
+        db.refresh(user)
+        
+        print(f"[ADMIN_BOT] Balance updated successfully. Final balance: {user.balance_ton}")
         
         await update.message.reply_text(
             f"✅ Баланс обновлен!\n\n"
