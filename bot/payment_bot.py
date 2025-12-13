@@ -48,12 +48,16 @@ class PromoCode(Base):
     # Связь с транзакцией
     transaction_id = Column(Integer, nullable=True)
 
-# Инициализируем базу данных
-try:
-    Base.metadata.create_all(bind=engine)
-    print("✅ База данных промокодов инициализирована")
-except Exception as e:
-    print(f"⚠️ Ошибка инициализации БД: {e}")
+# Инициализируем базу данных (с задержкой для избежания конфликтов)
+def init_promo_db():
+    """Инициализация БД промокодов"""
+    try:
+        Base.metadata.create_all(bind=engine)
+        print("✅ База данных промокодов инициализирована")
+    except Exception as e:
+        print(f"⚠️ Ошибка инициализации БД промокодов: {e}")
+        import traceback
+        traceback.print_exc()
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
@@ -198,18 +202,27 @@ def main():
         print("❌ Ошибка: PAYMENT_BOT_TOKEN не установлен в переменных окружения!")
         return
     
-    # Создаем приложение
-    application = Application.builder().token(PAYMENT_BOT_TOKEN).build()
+    # Инициализируем БД
+    init_promo_db()
     
-    # Регистрируем обработчики
-    application.add_handler(CommandHandler("start", start_command))
-    application.add_handler(PreCheckoutQueryHandler(precheckout_callback))
-    application.add_handler(MessageHandler(filters.SUCCESSFUL_PAYMENT, successful_payment_callback))
-    
-    print("💳 Payment bot запущен!")
-    
-    # Запускаем бота
-    application.run_polling(allowed_updates=Update.ALL_TYPES)
+    try:
+        # Создаем приложение
+        application = Application.builder().token(PAYMENT_BOT_TOKEN).build()
+        
+        # Регистрируем обработчики
+        application.add_handler(CommandHandler("start", start_command))
+        application.add_handler(PreCheckoutQueryHandler(precheckout_callback))
+        application.add_handler(MessageHandler(filters.SUCCESSFUL_PAYMENT, successful_payment_callback))
+        
+        print("💳 Payment bot запущен!")
+        
+        # Запускаем бота
+        application.run_polling(allowed_updates=Update.ALL_TYPES, drop_pending_updates=True)
+    except Exception as e:
+        print(f"❌ Критическая ошибка в боте оплаты: {e}")
+        import traceback
+        traceback.print_exc()
+        raise
 
 if __name__ == '__main__':
     main()
