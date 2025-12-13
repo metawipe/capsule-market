@@ -66,7 +66,7 @@ export function ProfileHeader({ activeTab, onTabChange }: ProfileHeaderProps) {
   const [lang, setLang] = useState('en' as Lang)
   const [isBalanceModalOpen, setIsBalanceModalOpen] = useState(false)
   const [currency, setCurrency] = useState<'ton' | 'stars'>('ton')
-  const { balance: tonBalance } = useUserContext()
+  const { balance: tonBalance, refreshBalance } = useUserContext()
   const [starsBalance] = useState(0)
   const [activeFilter, setActiveFilter] = useState<'collection' | 'backdrop' | 'symbol'>('collection')
   const [showLeftBlur, setShowLeftBlur] = useState(false)
@@ -229,6 +229,10 @@ export function ProfileHeader({ activeTab, onTabChange }: ProfileHeaderProps) {
 
   const handleBalanceClick = () => {
     hapticLight()
+    // Обновляем баланс при клике
+    if (refreshBalance) {
+      refreshBalance()
+    }
     setIsBalanceModalOpen(true)
   }
 

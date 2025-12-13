@@ -32,15 +32,23 @@ export function UserProvider({ children }: { children: ReactNode }) {
   // Получаем user_id из Telegram при монтировании
   useEffect(() => {
     const user = getTelegramUserSafe()
+    console.log('[UserContext] Telegram user:', user)
     if (user?.id) {
+      console.log('[UserContext] Setting userId:', user.id)
       setUserId(user.id)
+    } else {
+      console.warn('[UserContext] No user ID found in Telegram user')
     }
   }, [])
 
   // Загружаем баланс и подарки при изменении userId
   useEffect(() => {
+    console.log('[UserContext] userId changed:', userId)
     if (userId) {
+      console.log('[UserContext] Loading user data for userId:', userId)
       loadUserData()
+    } else {
+      console.warn('[UserContext] No userId, skipping loadUserData')
     }
   }, [userId])
 
@@ -73,10 +81,29 @@ export function UserProvider({ children }: { children: ReactNode }) {
       }
       
       // Загружаем баланс
-      const balanceResponse = await fetch(`${API_BASE_URL}/user/${userId}/balance`)
+      const balanceUrl = `${API_BASE_URL}/user/${userId}/balance`
+      console.log('[UserContext] Loading balance from:', balanceUrl)
+      console.log('[UserContext] API_BASE_URL:', API_BASE_URL)
+      console.log('[UserContext] userId:', userId)
+      
+      const balanceResponse = await fetch(balanceUrl)
+      console.log('[UserContext] Balance response status:', balanceResponse.status)
+      console.log('[UserContext] Balance response ok:', balanceResponse.ok)
+      
       if (balanceResponse.ok) {
         const balanceData = await balanceResponse.json()
-        setBalanceState(balanceData.balance_ton || 0.00)
+        console.log('[UserContext] Balance loaded (full object):', JSON.stringify(balanceData, null, 2))
+        console.log('[UserContext] balance_ton value:', balanceData.balance_ton)
+        console.log('[UserContext] balance_ton type:', typeof balanceData.balance_ton)
+        const newBalance = parseFloat(balanceData.balance_ton) || 0.00
+        console.log('[UserContext] Parsed balance:', newBalance)
+        console.log('[UserContext] Setting balance state to:', newBalance)
+        setBalanceState(newBalance)
+        console.log('[UserContext] Balance state set, current balance should be:', newBalance)
+      } else {
+        const errorText = await balanceResponse.text()
+        console.error('[UserContext] Failed to load balance:', balanceResponse.status, errorText)
+        console.error('[UserContext] Response headers:', Object.fromEntries(balanceResponse.headers.entries()))
       }
 
       // Загружаем подарки
@@ -160,15 +187,36 @@ export function UserProvider({ children }: { children: ReactNode }) {
     if (!userId) return
 
     try {
-      const response = await fetch(`${API_BASE_URL}/user/${userId}/balance`)
+      const balanceUrl = `${API_BASE_URL}/user/${userId}/balance`
+      console.log('[UserContext] Refreshing balance from:', balanceUrl)
+      const response = await fetch(balanceUrl)
       if (response.ok) {
         const data = await response.json()
-        setBalanceState(data.balance_ton || 0.00)
+        console.log('[UserContext] Balance refreshed (full object):', JSON.stringify(data, null, 2))
+        console.log('[UserContext] balance_ton from response:', data.balance_ton)
+        const newBalance = parseFloat(data.balance_ton) || 0.00
+        console.log('[UserContext] Parsed refreshed balance:', newBalance)
+        console.log('[UserContext] Setting balance state to:', newBalance)
+        setBalanceState(newBalance)
+      } else {
+        const errorText = await response.text()
+        console.error('[UserContext] Failed to refresh balance:', response.status, errorText)
       }
     } catch (error) {
-      console.error('Error refreshing balance:', error)
+      console.error('[UserContext] Error refreshing balance:', error)
     }
   }
+
+  // Автоматически обновляем баланс каждые 5 секунд
+  useEffect(() => {
+    if (!userId) return
+
+    const interval = setInterval(() => {
+      refreshBalance()
+    }, 5000) // Обновляем каждые 5 секунд
+
+    return () => clearInterval(interval)
+  }, [userId])
 
   return (
     <UserContext.Provider

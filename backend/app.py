@@ -78,15 +78,21 @@ async def create_user(user_data: UserCreate, db: Session = Depends(get_db)):
 @app.get("/api/user/{user_id}/balance", response_model=BalanceResponse)
 async def get_balance(user_id: int, db: Session = Depends(get_db)):
     """Получить баланс пользователя"""
+    print(f"[API] Getting balance for user_id: {user_id} (type: {type(user_id)})")
     user = db.query(User).filter(User.user_id == user_id).first()
     if not user:
+        print(f"[API] User {user_id} not found, creating new user")
         # Создаем пользователя с нулевым балансом
         user = User(user_id=user_id, balance_ton=0.0, balance_stars=0)
         db.add(user)
         db.commit()
         db.refresh(user)
+    else:
+        print(f"[API] User {user_id} found, balance_ton: {user.balance_ton}")
     
-    return BalanceResponse(balance_ton=user.balance_ton, balance_stars=user.balance_stars)
+    response = BalanceResponse(balance_ton=user.balance_ton, balance_stars=user.balance_stars)
+    print(f"[API] Returning balance: {response.balance_ton} TON")
+    return response
 
 @app.post("/api/user/{user_id}/deposit", response_model=TransactionResponse)
 async def deposit_balance(
