@@ -432,28 +432,34 @@ async def add_gift_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 def main():
-    """Запуск бота"""
+    """Запуск админ-бота"""
     if not BOT_TOKEN:
         print("❌ Ошибка: ADMIN_BOT_TOKEN не установлен в переменных окружения!")
         return
     
-    # Создаем приложение
-    application = Application.builder().token(BOT_TOKEN).build()
-    
-    # Регистрируем обработчики команд
-    application.add_handler(CommandHandler("start", start))
-    application.add_handler(CommandHandler("help", help_command))
-    application.add_handler(CommandHandler("balance", balance_command))
-    application.add_handler(CommandHandler("users", users_command))
-    application.add_handler(CommandHandler("user", user_command))
-    application.add_handler(CommandHandler("gifts", gifts_command))
-    application.add_handler(CommandHandler("transactions", transactions_command))
-    application.add_handler(CommandHandler("add_gift", add_gift_command))
-    
-    print("🤖 Админ-бот запущен!")
-    
-    # Запускаем бота
-    application.run_polling(allowed_updates=Update.ALL_TYPES)
+    try:
+        # Создаем приложение
+        application = Application.builder().token(BOT_TOKEN).build()
+        
+        # Регистрируем обработчики команд
+        application.add_handler(CommandHandler("start", start))
+        application.add_handler(CommandHandler("help", help_command))
+        application.add_handler(CommandHandler("balance", balance_command))
+        application.add_handler(CommandHandler("users", users_command))
+        application.add_handler(CommandHandler("user", user_command))
+        application.add_handler(CommandHandler("gifts", gifts_command))
+        application.add_handler(CommandHandler("transactions", transactions_command))
+        application.add_handler(CommandHandler("add_gift", add_gift_command))
+        
+        print("🤖 Админ-бот запущен!")
+        
+        # Запускаем бота
+        application.run_polling(allowed_updates=Update.ALL_TYPES, drop_pending_updates=True)
+    except Exception as e:
+        print(f"❌ Критическая ошибка в админ-боте: {e}")
+        import traceback
+        traceback.print_exc()
+        raise
 
 
 if __name__ == '__main__':
