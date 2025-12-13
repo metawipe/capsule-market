@@ -20,7 +20,7 @@ const UserContext = createContext<UserContextType | undefined>(undefined)
 // В продакшене используем переменную окружения или прямой URL
 const API_BASE_URL = import.meta.env.VITE_API_URL || 
   (import.meta.env.PROD 
-    ? 'https://your-backend-url.railway.app/api' // TODO: Замените на ваш URL бэкенда
+    ? 'https://capsule-market-production.up.railway.app/api'
     : '/api')
 
 export function UserProvider({ children }: { children: ReactNode }) {

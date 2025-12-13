@@ -45,3 +45,4 @@ backend/db.sqlite3
 .env
 .env.local
 .env.production
+bot/.env
