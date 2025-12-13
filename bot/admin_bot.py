@@ -453,8 +453,12 @@ def main():
         
         print("🤖 Админ-бот запущен!")
         
-        # Запускаем бота
-        application.run_polling(allowed_updates=Update.ALL_TYPES, drop_pending_updates=True)
+        # Запускаем бота (отключаем обработку сигналов для работы в потоке)
+        application.run_polling(
+            allowed_updates=Update.ALL_TYPES, 
+            drop_pending_updates=True,
+            stop_signals=None  # Отключаем обработку сигналов для работы в потоке
+        )
     except Exception as e:
         print(f"❌ Критическая ошибка в админ-боте: {e}")
         import traceback
