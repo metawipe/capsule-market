@@ -50,6 +50,28 @@ export function UserProvider({ children }: { children: ReactNode }) {
     try {
       setIsLoading(true)
       
+      // Создаем/обновляем пользователя с данными из Telegram
+      const telegramUser = getTelegramUserSafe()
+      if (telegramUser) {
+        try {
+          await fetch(`${API_BASE_URL}/user`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              user_id: userId,
+              username: telegramUser.username || null,
+              first_name: telegramUser.first_name || null,
+              last_name: telegramUser.last_name || null,
+              is_premium: telegramUser.is_premium || false,
+            }),
+          })
+        } catch (error) {
+          console.error('Error creating/updating user:', error)
+        }
+      }
+      
       // Загружаем баланс
       const balanceResponse = await fetch(`${API_BASE_URL}/user/${userId}/balance`)
       if (balanceResponse.ok) {

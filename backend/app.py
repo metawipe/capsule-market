@@ -51,10 +51,21 @@ async def get_user(user_id: int, db: Session = Depends(get_db)):
 
 @app.post("/api/user", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
 async def create_user(user_data: UserCreate, db: Session = Depends(get_db)):
-    """Создать нового пользователя"""
+    """Создать или обновить пользователя"""
     # Проверяем, существует ли пользователь
     existing_user = db.query(User).filter(User.user_id == user_data.user_id).first()
     if existing_user:
+        # Обновляем данные пользователя если они изменились
+        if user_data.username:
+            existing_user.username = user_data.username
+        if user_data.first_name:
+            existing_user.first_name = user_data.first_name
+        if user_data.last_name:
+            existing_user.last_name = user_data.last_name
+        if user_data.is_premium is not None:
+            existing_user.is_premium = user_data.is_premium
+        db.commit()
+        db.refresh(existing_user)
         return existing_user
     
     # Создаем нового пользователя
