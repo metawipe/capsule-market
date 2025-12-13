@@ -1,0 +1,95 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #151515;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  --telegram-header-height: 60px;
+  --header-height: calc(var(--telegram-header-height) + env(safe-area-inset-top, 0px) + 16px + 40px + 16px);
+}
+
+/* Mini App: блокируем браузерное поведение */
+html, body {
+  -webkit-text-size-adjust: 100%;
+  overscroll-behavior: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* запрещаем прокрутку страницы */
+}
+
+/* Разрешаем скролл для внутренних контейнеров */
+#root {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Отключаем выделение, лонг‑тап меню и подсветку тапа вне инпутов */
+*:not(input):not(textarea):not([contenteditable="true"]) {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+a, button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Разрешаем скролл для скроллируемых контейнеров */
+[data-tab="profile"],
+.profile-tab-container,
+.profile-content {
+  touch-action: pan-y !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Убеждаемся что скролл работает везде где нужно */
+.profile-tab-container,
+[data-tab="profile"] {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  touch-action: pan-y !important;
+}
+
+/* Убираем блокировку скролла для всех контейнеров с overflow-y: auto */
+*[style*="overflow-y: auto"],
+*[style*="overflowY: auto"],
+.profile-tab-container,
+[data-tab="profile"] {
+  touch-action: pan-y !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+/* Центровка мобильного полотна на десктопе */
+.tma-root {
+  display: flex;
+  justify-content: center;
+  align-items: stretch; /* контейнер касается верха и низа */
+  min-height: 100dvh;
+  background: transparent;
+  /* Отступ сверху для кнопок Telegram Mini App (около 56px) */
+  padding-top: 60px;
+}
+
+.tma-container {
+  width: 100%;
+  min-height: 100dvh;
+  padding: 0;
+  margin: 0;
+}
+
+/* Скрываем скроллбары для скроллируемых элементов */
+/* Эти стили применяются к элементам с overflow-y: auto или overflow: auto */
+
+/* Убираем все рамки/ограничения ширины */

@@ -1,0 +1,377 @@
+.profile-content {
+    padding: 0px 20px calc(20px + env(safe-area-inset-bottom, 0px)) 20px;
+    padding-top: 0px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    touch-action: pan-y !important;
+    min-height: fit-content;
+    position: relative;
+    z-index: 0;
+  }
+  
+  .profile-avatar-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    margin-top: -10px;
+  }
+  
+  .profile-avatar-container {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .profile-avatar {
+    width: 132px;
+    height: 132px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #1a1a1a;
+    background: #2a2a2a;
+  }
+  
+  .profile-username {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    margin: 0;
+    text-align: center;
+    text-transform: none;
+    margin-top: -5px;
+  }
+  
+  .profile-content-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    flex-shrink: 0;
+    padding-bottom: 55px;
+  }
+  
+  .profile-content-bar {
+    background: #1E1E1E;
+    border-radius: 16px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .profile-wallet-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+  }
+  
+  .profile-wallet-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .profile-wallet-title {
+    color: #C9C9C9;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .profile-wallet-address {
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    word-break: break-all;
+  }
+  
+  .profile-wallet-actions {
+    flex-shrink: 0;
+  }
+  
+  .profile-wallet-btn {
+    background: #1c6eff;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    min-width: 130px;
+  }
+  
+  .profile-wallet-btn:active {
+    background: #155ccc;
+    transform: scale(0.98);
+  }
+  
+  .profile-wallet-btn--disconnect {
+    background: #383838;
+  }
+  
+  .profile-wallet-btn--disconnect:active {
+    background: #2a2a2a;
+  }
+  
+  .profile-content-section {
+    margin-bottom: 20px;
+  }
+  
+  .profile-content-section:last-of-type {
+    margin-bottom: 0;
+  }
+  
+  .profile-content-divider {
+    height: 1px;
+    background: #3D3D3D;
+    margin: 20px 0;
+    width: 100%;
+  }
+  
+  .profile-referral-section {
+    margin-bottom: 0;
+  }
+  
+  .profile-invite-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  
+  .profile-invite-text {
+    color: #C9C9C9;
+    font-size: 17px;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.4;
+    text-align: left;
+    flex: 1;
+    word-wrap: break-word;
+  }
+  
+  .profile-terms-btn {
+    background: #18304B;
+    color: #0176F6;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  
+  .profile-terms-btn:active {
+    background: #1a3658;
+    transform: scale(0.98);
+  }
+  
+  .profile-invite-buttons {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+  }
+  
+  .profile-invite-btn {
+    flex: 1;
+    background: #1c6eff;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .profile-invite-btn:active {
+    background: #155ccc;
+    transform: scale(0.98);
+  }
+  
+  .profile-copy-btn {
+    background: #383838;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    min-width: auto;
+    flex-shrink: 0;
+  }
+  
+  .profile-copy-btn:active {
+    background: #2a2a2a;
+    transform: scale(0.98);
+  }
+  
+  .profile-copy-icon {
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .profile-stats-section {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+  }
+  
+  .profile-stats-rows {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  
+  .profile-stats-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2px;
+    width: 100%;
+  }
+  
+  .profile-stats-row:last-child {
+    margin-bottom: 0;
+  }
+  
+  .profile-stats-item {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+  }
+  
+  .profile-stats-label {
+    color: #C9C9C9;
+    font-size: 15px;
+    font-weight: 500;
+    margin-right: 8px;
+  }
+  
+  .profile-stats-value {
+    color: #C9C9C9;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+  
+  .profile-token-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #C9C9C9;
+  }
+  
+  .profile-token-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .profile-withdraw-btn {
+    background: #1c6eff;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    min-width: 100px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  .profile-withdraw-btn:disabled {
+    background: #0F4C8F;
+    color: #8F8F8F;
+    cursor: not-allowed;
+    transform: none;
+  }
+  
+  .profile-withdraw-btn:not(:disabled):active {
+    background: #155ccc;
+    transform: scale(0.98);
+  }
+  
+  @media (max-width: 480px) {
+    .profile-content {
+      padding: 0px 16px 16px 16px;
+      padding-top: 0px;
+      gap: 22px;
+    }
+    
+    .profile-avatar-section {
+      margin-top: -15px; 
+      gap: 8px;
+    }
+    
+    .profile-avatar-container {
+      width: 120px;
+      height: 120px;
+    }
+    
+    .profile-avatar {
+      width: 120px;
+      height: 120px;
+    }
+    
+    .profile-username {
+      font-size: 21px;
+      margin-top: -3px;
+    }
+    
+    .profile-content-bars {
+      gap: 12px;
+    }
+    
+    .profile-content-bar {
+      padding: 16px;
+    }
+  }

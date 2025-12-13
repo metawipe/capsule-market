@@ -1,0 +1,110 @@
+.add-gift-modal {
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.add-gift-modal__panel {
+    background: #1c1c1d;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.add-gift-modal__step {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+}
+
+.add-gift-modal__separator {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.06);
+    margin-left: 56px; 
+}
+
+.add-gift-modal__icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+}
+
+.add-gift-modal__icon svg {
+    display: block;
+}
+
+.add-gift-modal__icon--blue {
+    color: #ffffff;
+    background: #3b82f6;
+    border-radius: 6px;
+}
+
+.add-gift-modal__icon--purple {
+    color: #ffffff;
+    background: #a855f7;
+    border-radius: 6px;
+}
+
+.add-gift-modal__icon--green {
+    color: #ffffff;
+    background: #22c55e;
+    border-radius: 6px;
+}
+
+.add-gift-modal__content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.add-gift-modal__title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.3;
+    letter-spacing: -0.2px;
+}
+
+.add-gift-modal__subtitle {
+    font-size: 13px;
+    color: #9ca0aa;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+.add-gift-modal__link {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.add-gift-modal__action {
+    margin-top: 4px;
+}
+
+.add-gift-modal__btn {
+    background: #1c6eff;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.2s ease, transform 0.1s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.add-gift-modal__btn:active {
+    background: #155ccc;
+    transform: scale(0.98);
+}

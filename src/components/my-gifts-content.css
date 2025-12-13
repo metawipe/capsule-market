@@ -1,0 +1,50 @@
+.my-gifts-content {
+  padding: 0 20px 40px;
+}
+
+.my-gifts-content__title {
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.my-gifts-content__empty-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 12px 0 8px;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.my-gifts-content__empty-subtitle {
+  font-size: 14px;
+  color: #6D6D71;
+  margin-bottom: 24px;
+}
+
+.my-gifts-content__empty-btn {
+  background: #ffffff;
+  color: #000000;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+.my-gifts-content__empty-btn:active {
+  opacity: 0.8;
+}
+
+@media (max-width: 480px) {
+  .my-gifts-content {
+    padding: 0 16px 32px;
+  }
+}

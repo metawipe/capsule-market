@@ -1,0 +1,318 @@
+.market-content {
+    padding: 20px 20px calc(170px + env(safe-area-inset-bottom, 0px)) 20px;
+    padding-top: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    touch-action: pan-y !important;
+    min-height: fit-content;
+    position: relative;
+    z-index: 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    background: transparent;
+}
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 10px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.gift-card.animate-in {
+    animation: fade-in-up 0.3s ease-out forwards;
+}
+
+.market-content::-webkit-scrollbar {
+    display: none;
+}
+
+.market-content__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    width: 100%;
+    max-width: 100%;
+    /* Оптимизация рендеринга сетки */
+    contain: layout;
+    content-visibility: auto;
+    contain-intrinsic-size: 0 200px;
+}
+
+.gift-card {
+    background: #1E1E1E;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    -webkit-user-select: none;
+    user-select: none;
+    /* Оптимизация производительности */
+    contain: layout style paint;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.gift-card:active {
+    transform: scale(0.98);
+}
+
+.gift-card__image {
+    width: 100%;
+    aspect-ratio: 1;
+    background: #2A2A2A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.gift-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Оптимизация загрузки изображений */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    transform: translateZ(0);
+    will-change: opacity;
+}
+
+.gift-card__image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2A2A2A 0%, #1E1E1E 100%);
+}
+
+.gift-card__image-placeholder .mdi {
+    width: 64px;
+    height: 64px;
+    color: #4A4A4A;
+    mask-image: url('https://cdn.jsdelivr.net/npm/@mdi/svg@7.4.47/svg/gift.svg');
+    -webkit-mask-image: url('https://cdn.jsdelivr.net/npm/@mdi/svg@7.4.47/svg/gift.svg');
+    mask-size: cover;
+    -webkit-mask-size: cover;
+    background-color: currentColor;
+}
+
+.gift-card__content {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.gift-card__title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.gift-card__id {
+    font-size: 14px;
+    color: #6D6D71;
+    margin: 0;
+    font-weight: 400;
+}
+
+.gift-card__actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.gift-card__price-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 12px;
+    background: #1C6EFF;
+    border: none;
+    border-radius: 16px;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.gift-card__price-btn:active {
+    background: #1556CC;
+}
+
+.gift-card__price-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    line-height: 0;
+}
+
+.gift-card__price {
+    font-weight: 600;
+}
+
+.gift-card__cart-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #2A2A2A;
+    border: none;
+    border-radius: 16px;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    flex-shrink: 0;
+}
+
+.gift-card__cart-btn:active {
+    background: #353535;
+}
+
+.gift-card__cart-btn .mdi {
+    width: 16px;
+    height: 16px;
+    mask-image: url('https://cdn.jsdelivr.net/npm/@mdi/svg@7.4.47/svg/cart.svg');
+    -webkit-mask-image: url('https://cdn.jsdelivr.net/npm/@mdi/svg@7.4.47/svg/cart.svg');
+    mask-size: cover;
+    -webkit-mask-size: cover;
+    background-color: currentColor;
+}
+
+/* Адаптивная сетка */
+@media (min-width: 640px) {
+    .market-content__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 768px) {
+    .market-content__grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .market-content__grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media (min-width: 1280px) {
+    .market-content__grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .market-content {
+        padding: 16px 16px calc(170px + env(safe-area-inset-bottom, 0px)) 16px;
+        padding-top: 25px;
+    }
+
+    .gift-card__content {
+        padding: 10px;
+    }
+
+    .gift-card__title {
+        font-size: 16px;
+    }
+
+    .gift-card__id {    
+        font-size: 14px;
+    }
+
+    .gift-card__price-btn {
+        padding: 9px 10px;
+        font-size: 14px;
+    }
+
+    .gift-card__cart-btn {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+.market-content__loading,
+.market-content__error,
+.market-content__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.market-content__spinner {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.market-content__spinner .mdi {
+    width: 48px;
+    height: 48px;
+    color: #1c6eff;
+    mask-image: url('https://cdn.jsdelivr.net/npm/@mdi/svg@7.4.47/svg/loading.svg');
+    -webkit-mask-image: url('https://cdn.jsdelivr.net/npm/@mdi/svg@7.4.47/svg/loading.svg');
+    mask-size: cover;
+    -webkit-mask-size: cover;
+    background-color: currentColor;
+}
+
+.market-content__loading p,
+.market-content__error p,
+.market-content__empty p {
+    color: #8E8E93;
+    font-size: 16px;
+    margin: 0;
+}
+
+.market-content__retry-btn {
+    margin-top: 16px;
+    padding: 12px 24px;
+    background: #1c6eff;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.market-content__retry-btn:active {
+    background: #155ccc;
+    transform: scale(0.98);
+}
+

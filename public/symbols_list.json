@@ -1,0 +1,992 @@
+[
+  {
+    "name": "Acorn",
+    "slug": "Acorn",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.mohgkG_baMSNYCMtCs_yOOXl3xDniM119SAX3UYhEvv6blnr5VWGIEAGtYP0XOX2.webp"
+  },
+  {
+    "name": "Alarm",
+    "slug": "Alarm",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.3f75JDyqfwROqER_Iaw0_fKBqDpE1NtEGNBJ6_f9R5MClXhFC8mPRPq7qUyUhMPA.webp"
+  },
+  {
+    "name": "Alkonost",
+    "slug": "Alkonost",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.kZ3lGay0ADT1oi27WWhBj7Re2WPMqlfDbJetuD-vLdIBJ3iYUaR7XRNn5FsspjPs.webp"
+  },
+  {
+    "name": "Anchor",
+    "slug": "Anchor",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.X3o6wNYcNjKj9tqTobdummnqFQrC354raXXLDnJGkVAHkeqBmUynAAOCRIdEHo4Z.webp"
+  },
+  {
+    "name": "Apple",
+    "slug": "Apple",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.nIP4L9qP9nK_ADwIoYL6aa_IbpqZX4rIJToYehsMX7-qa1ZJLGr8ZrzeBP-Y_VH_.webp"
+  },
+  {
+    "name": "Arabian Horse",
+    "slug": "Arabian Horse",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.ARa9JlqIRouULK-igWN4wqhx3lQ2C7MXX-ECU0ieudlpijdxUjLxKwSib9Gt3EuO.webp"
+  },
+  {
+    "name": "Axe",
+    "slug": "Axe",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.GBsk-cDm9WPT8gg_Fa6L_TXwUwDZfIW7I-eaWq_OnESvHdO6CJmvffU0u563xIQo.webp"
+  },
+  {
+    "name": "Ball",
+    "slug": "Ball",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.l-xYtFeVWbpKcUb5f5vmqHPnGXtFKqgZTQEzoVyrCxd7vGNPWzKdZsi-lf1ozvFK.webp"
+  },
+  {
+    "name": "Bandage",
+    "slug": "Bandage",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.pJPe_MvOKIWFGQjPH9dq-DyIq4d-MunB8HXRKsv9Njjdr1I6WScopudXQr6-GBig.webp"
+  },
+  {
+    "name": "Baphomet",
+    "slug": "Baphomet",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.-W2seE19wer95JXWF-Te8Vp383mah-K6_Ce2sDXPE_j-MX9Q6YxuSgURfqS3hZCJ.webp"
+  },
+  {
+    "name": "Bastet",
+    "slug": "Bastet",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.CJfAaSS_S2ayTGr9fCfUBadK_kCYsgXd7Q_FR9MKKjA-u3IcSNZC24GsFQyYIEFz.webp"
+  },
+  {
+    "name": "Beetle",
+    "slug": "Beetle",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.eFLsRzOtwmkRO0SUCz68s6UaVY801M4Ek1CU7H5YbXu_VNaGnSIQF5tH5TfzK9fM.webp"
+  },
+  {
+    "name": "Bell Pepper",
+    "slug": "Bell Pepper",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.sWlOjCVoQHBBOlmH8V1CJeNUv150bYmLFAb_vZaqUouXCzi8Nk7AGGDR_GdU5Jed.webp"
+  },
+  {
+    "name": "Birthday Cake",
+    "slug": "Birthday Cake",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.yBLBwZEAXbrieBIIXId1zkxUiwm_5a-w8HHTRhcaGlVx5qPlBhYovpXZR0i4K5T0.webp"
+  },
+  {
+    "name": "Bishop",
+    "slug": "Bishop",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.C_392xbCJ-hjz7iQxzjHGW-7TyLlLZskUhLFEaq73cKclawpe48zuGonbbcXfsi0.webp"
+  },
+  {
+    "name": "Blood Drop",
+    "slug": "Blood Drop",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.aLRzb4HeLjVDphr-09K7I-sMgxTT-sPmpEjMafNXlzCxtzAYOQAzSVl0_p-5_urh.webp"
+  },
+  {
+    "name": "Bone",
+    "slug": "Bone",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.7vA6mNP2iTT1hL6sMPTtg1ybaFXClF7dCScpvyznOc38xESwvAPwB59BVN0qYU0M.webp"
+  },
+  {
+    "name": "Bottle",
+    "slug": "Bottle",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.JNNEP3QVeLHGi1OpUX-zb417OklLX-py3MPdNkCrSmPJc6maAyB-9xpDkM9SsFzl.webp"
+  },
+  {
+    "name": "Bottlenose",
+    "slug": "Bottlenose",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.CNib2C15Z6p52HSTJucZjcq8yBJqBcLa1QhNbE3jCGKfvyV7-QEPoqEN3kbQihgj.webp"
+  },
+  {
+    "name": "Bow Tie",
+    "slug": "Bow Tie",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.KZfFsFEdAZ-_RVtquP4amCdsIxPRR0uslNEHCFI9KGsr9nzqVryzzvGZIRevNBFO.webp"
+  },
+  {
+    "name": "Bread",
+    "slug": "Bread",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.idDgAvsBn7QH1iu4FYaFJhvrQHqWJcqt8YctG5RjPq7-TmVYMsWesvA1H_j5g5T6.webp"
+  },
+  {
+    "name": "Bubble Tea",
+    "slug": "Bubble Tea",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.6LwVZX2W9RQUkdBGwHiWlRUAZqjbrQIiRHFuXIKeCk02KsAcen7fK1yOhfXcqX7f.webp"
+  },
+  {
+    "name": "Bull of Heaven",
+    "slug": "Bull of Heaven",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.OWQAD_Q6mRlaaeXcIxf-5mkfRq9poa5wJtnPEmsQGSU5SmDwy-mhprAxxC21FQ9I.webp"
+  },
+  {
+    "name": "Bunny",
+    "slug": "Bunny",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.JMZVHhlEhpFGmSmBV_sMk5NMfMXxRTrww5KHbsxb33sZa9OJWWHvtkab9_vjsAtr.webp"
+  },
+  {
+    "name": "Bunny Ears",
+    "slug": "Bunny Ears",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.FO_wSbh6LQqEPBgL_RVSYD4bcSZDRnglFs9sqiuO4o4yJBdB_VrseaElVfmnPecf.webp"
+  },
+  {
+    "name": "Calm Wolf",
+    "slug": "Calm Wolf",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.eZVcc30S5dgCkxmDihzKjHjK4_5LveDIQRo9ec72d9q04bLtfkDl-2bM7VlOMK4Z.webp"
+  },
+  {
+    "name": "Candy",
+    "slug": "Candy",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.RfoFYWBHYJ6mhs7-BDYU3JsGtjDEx9xaYJe4cPeuq5Zm105cXwXgz1epBk15wEeU.webp"
+  },
+  {
+    "name": "Cap",
+    "slug": "Cap",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.wBDc3WE3BVLTt99f9HW-Gu0zaTlfEG7-2v2RwHw7aJymhpmaggEnPWHt_sRWvcqi.webp"
+  },
+  {
+    "name": "Car",
+    "slug": "Car",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.Szo6puvqMQpyiAx1NBqamyfHqvWLIloAgymhYU3oQkY4j7QJdI5vzCcMYSFE3g0V.webp"
+  },
+  {
+    "name": "Cash",
+    "slug": "Cash",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.mmEzvFRRRpxdm06DisEihYy04Fa6P3IsaSmQhSK9CpKcDuUe5ECj7Q2wiQHYYNBp.webp"
+  },
+  {
+    "name": "Cat Mask",
+    "slug": "Cat Mask",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.1gfBgBPe8TtHj8wzphEJLsjqQPV8h0itpW7vrHEYHn5L7Zx0NnjaKJ0VkVJxa5Zm.webp"
+  },
+  {
+    "name": "Celtic Cross",
+    "slug": "Celtic Cross",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.X5UROHYv15Z8MXj16f8cclb6vclIkiUWD2LvFUZiRichAFP923T_jigySHAcWU4A.webp"
+  },
+  {
+    "name": "Celtic Wolf",
+    "slug": "Celtic Wolf",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.femfjW9iQam-OlwrFFk_m8izibiuq1ofxlbm9uiGwaQpVMTrYxXfs7bpYx8_XQU2.webp"
+  },
+  {
+    "name": "Champagne",
+    "slug": "Champagne",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.tdR7Ay1gRBFU1x6jNDk2gXbjvEElijlT3ToeVFiuWE5r8NmIdS6JaT4ZhraSegNr.webp"
+  },
+  {
+    "name": "Cheese",
+    "slug": "Cheese",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.EgsuyBPKWCYVz6aWqGkgx2Z3OfPvwS7T3ECSh6xzZp8IqcrbeHuaRq4n2UDpQdwi.webp"
+  },
+  {
+    "name": "Chest",
+    "slug": "Chest",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.TJFnZlJiE5qTpnCCMShdF9PABPcuCxIe3BCKYxmXuMRCDI7DocojjuMBSThDhDC8.webp"
+  },
+  {
+    "name": "Chili",
+    "slug": "Chili",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.tHh5esxW44mQG8Y8Ljhry5Cy1LrbOly9zfs0dx_iDe7gRdsG-Kk_wGoeQ7wO7emZ.webp"
+  },
+  {
+    "name": "Chili Pepper",
+    "slug": "Chili Pepper",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.k_SDaR3hKCEjC7a_8Yxh8waa55buRJ9aytFlo83D0f_aHuXze2FlCFAXSWDIewQt.webp"
+  },
+  {
+    "name": "Cicada",
+    "slug": "Cicada",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.BHl5F6OVJhw1oJ8pi8NzDOpjTWrIyaRcLoaYLqlSVXEoUkf66U3uhchkKMUEgmJo.webp"
+  },
+  {
+    "name": "Clubs",
+    "slug": "Clubs",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.EzemN7W-XgG7kMbX8KJtvxl_fghYaDeD1la37Oma84qaahv6QdCI9CtWVU-WtYRC.webp"
+  },
+  {
+    "name": "Coat of Arms",
+    "slug": "Coat of Arms",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.hhJVG8Ytm0w9maAeYl8vubsVdfVniT3VU0uMNLo9YfQ7eSoMouYH1zulTbDz-HOD.webp"
+  },
+  {
+    "name": "Cobra",
+    "slug": "Cobra",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.ezMpP5bcp1LtfKKzpqqcjQui3ewaoeW0IC8yFzxfvEsCH25wLn_iYsl0A3VYpkej.webp"
+  },
+  {
+    "name": "Cocktail",
+    "slug": "Cocktail",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.8W0tWQbpUZS6F8Q7rxiBx9MSKsh3a_IZh_0O-YWAFRq7VvrXqDVQHmrAL8zSjhPz.webp"
+  },
+  {
+    "name": "Coconut",
+    "slug": "Coconut",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.0_G6SRD42NOrVFxNnxWCKqm07DS3floEH26BtamZrUu-P6J7pqkEUdODv4IFnCPF.webp"
+  },
+  {
+    "name": "Coffee Bean",
+    "slug": "Coffee Bean",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.hILMdiQfmpZzgqz2c_eRlmPteyKJq3DYCODBytESH67-9JZTscFeikrSAPQWtsxK.webp"
+  },
+  {
+    "name": "Coin",
+    "slug": "Coin",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.PXBwax8KBiOnpPj9WEJoeithE8PfvoE_7d5ZOOwVtBmUK0CUqbVIwlFPyV9KCnz1.webp"
+  },
+  {
+    "name": "Coin Purse",
+    "slug": "Coin Purse",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.Yl33ZhmNxdNy9afqwq1nBnOdmP4OgIR_l36OQdHS5iAzU53RJuJq4MdkCsqDUQ0X.webp"
+  },
+  {
+    "name": "Crab",
+    "slug": "Crab",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.cQs-exf8W-3oEOiHieF0KHaRibeBn3w0nvBGqS79n1vVfo_VFyPVt6fIdEkcxY4I.webp"
+  },
+  {
+    "name": "Croissant",
+    "slug": "Croissant",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol._Iixlw4jRJ5FcccqtXrUXkA08gMSfXyaN_3cr__-BT3TdbNm5jkgrL49n7s8qT4F.webp"
+  },
+  {
+    "name": "Crown",
+    "slug": "Crown",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.Mz_9AnOH85bqNmYCwwkHJD0pshonYVd-bFb2fUPcKsZTYI5Oy9BY5KQUUZNdBSaV.webp"
+  },
+  {
+    "name": "Crusader",
+    "slug": "Crusader",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.e6LHjC7hjuesUiau-mRfhdSzCD9BaUNLJYo6az4cTOnuFp30PnkpGl8LzFeFF7gf.webp"
+  },
+  {
+    "name": "Crystal Ball",
+    "slug": "Crystal Ball",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.b6a3zxyP_WNm2oRyHuQF_b_EK4yjgCAiIK-5RCtML8hVL-egCJ2J5XFrUCc3ud3k.webp"
+  },
+  {
+    "name": "Dessert",
+    "slug": "Dessert",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.VGRnkjYR_U3sCmvkt27yaC7K0BzBD-2Y04OqR0cAXN4-rTKr4sY8bGFfoxPbpF6S.webp"
+  },
+  {
+    "name": "Diamond",
+    "slug": "Diamond",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.FDCI8OSarB02Bf1VI3NLe5nxt32UDH0su6XITa01S1FKancUTTMYmqVlfDRQZCyr.webp"
+  },
+  {
+    "name": "Dice",
+    "slug": "Dice",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.m0hbM-VXJIRnmn8UnHz_GDvLofzfLz0iA2VIm5KrtDWTxZxgn78wSCWXEZaEmX3l.webp"
+  },
+  {
+    "name": "Doberman",
+    "slug": "Doberman",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.icaY-HSo6D5gZGsSy6pSRVY5TyqT1XXu3wJpN9ylWS0O3bYQbVAu8Zu6eqnTgkXd.webp"
+  },
+  {
+    "name": "Dragonfly",
+    "slug": "Dragonfly",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.9stDckvDwVr2oLi83NxaGV3IoYj4fHYNTqq7xpKz6Y1KvHf1-YBso14g28FjD8ak.webp"
+  },
+  {
+    "name": "Eagle",
+    "slug": "Eagle",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.S9Hku6F5_j80J3F_HXrp7O6IJIYhMQrDXmGoeGbMyOcQH4BEEbkUAg_xTS22YcBs.webp"
+  },
+  {
+    "name": "Eikthyrnir",
+    "slug": "Eikthyrnir",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.VOv5zxy1woodRcTUryKTGA8SXsY3WNlX0pYV9sqTV-l-73VJaSsHryIp1T0td3WT.webp"
+  },
+  {
+    "name": "Feather",
+    "slug": "Feather",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.dIKaPzZlThtBhUcaqPAWCnFkoSiF1ytLJkdvN4RTKmInSSh2MNmll3ilPja8zNnA.webp"
+  },
+  {
+    "name": "Fehu Rune",
+    "slug": "Fehu Rune",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.sV4Lb5a8jWrN3rSBgEDVh4ehBMoO16wtReVjt8xn8pc2A7eBCIkbtA2j6_QiDiWK.webp"
+  },
+  {
+    "name": "Fenrir",
+    "slug": "Fenrir",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.Lc1Q2K07EgvLsQ6gik44MNOCBGcFXX91XwTcZslhk83uN92FgfgGjR6mUVTKSbZ0.webp"
+  },
+  {
+    "name": "Fire",
+    "slug": "Fire",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.sZpmJlVRJ1UQ3YUWYyMNvvXHgIgwkJghYbWGVmofXcOMhlXVSsHG6myqT5-jFuKO.webp"
+  },
+  {
+    "name": "Firebird",
+    "slug": "Firebird",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.muvvTvFYoRDm6qIEEFJStn40QhJi6ZYCK7ElRWOEZMOoD6tJW7VVSYPCvVaf5g2b.webp"
+  },
+  {
+    "name": "Fish",
+    "slug": "Fish",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.bG113FQNJSrMNpwDtxEGiWEEy5zT7t2QRYIPqtyg5CE5fR9fv9Wcy1--O4rNRw7a.webp"
+  },
+  {
+    "name": "Fish Skeleton",
+    "slug": "Fish Skeleton",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.cLYR9J2_CBg30B69toHhz6IDVSCbLSnzaseFbuHLWdcTBeVgFNdzJgCa_GQb9Fq_.webp"
+  },
+  {
+    "name": "Flamingo",
+    "slug": "Flamingo",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.4RhTqJPzw9PFCc6i8N57fD8_0QScyQA4ddSUkeoyTRZoE42XKQMKq2LZ3SdBYQTl.webp"
+  },
+  {
+    "name": "Flashlight",
+    "slug": "Flashlight",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.r_KcU7J3_hhJTYU1pBo7M2L880fGuNcguSsD-P5Mk5SgfmO49GKYp7rf_h-l4KqZ.webp"
+  },
+  {
+    "name": "Fleur-de-lis",
+    "slug": "Fleur-de-lis",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.UhmCpt0xoWIsX18PCeOH2RsBJg7ukZsv3K4uTGZFdGuxLuj_ZSvTMrZt6HT7kZfb.webp"
+  },
+  {
+    "name": "Flipper",
+    "slug": "Flipper",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.mscF3-ZyGKKrJXs21xZDjHo50ohYtXYGprLgNstOvbye2pTQYeKNGvsFxUYWY6fM.webp"
+  },
+  {
+    "name": "Flower",
+    "slug": "Flower",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.UB53vU7IaIcbYNblOmQ7FmyqvDtxEE5V3XaMAm7mkrqx0cXwCZF81HeW_7ao9nxb.webp"
+  },
+  {
+    "name": "Flower Cross",
+    "slug": "Flower Cross",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.VhcXy-kkE0ElvziQ0O0HquT5qUwM2BozXPN93R5wpEw6NqS6eZoLCL262I1OjKxM.webp"
+  },
+  {
+    "name": "Flower Tulip",
+    "slug": "Flower Tulip",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.xUnN2u3xJu-xFzoKoffM-s65Yoxl37Ncf5oxUF3qhfZPbC6XibqYLHVSdVw026Z9.webp"
+  },
+  {
+    "name": "Garden Pot",
+    "slug": "Garden Pot",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.IN6GmAFZm4LSi4czTAQTskTb2bAFDYWEbYJIoMi_tNlunarAFUYZEgXRWcDsyR4j.webp"
+  },
+  {
+    "name": "Gear",
+    "slug": "Gear",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.KPAdon5n_nVY8Ois3Bki_qtlUStHpxz0ppd54YBdNC0OzVrAWTxuVbEV_kzms5qS.webp"
+  },
+  {
+    "name": "Gem",
+    "slug": "Gem",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.54A3C5LMYA8wTNq-l4Br8vTcQmocIidHDFo7XwKMMCanEXGPLvgdEQBZO33Zk2PS.webp"
+  },
+  {
+    "name": "Genie Lamp",
+    "slug": "Genie Lamp",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.TSK2MGSWqbT5G3YfyO-l9QpfdxEgXDEMgWoFqVNEEMyq2RnBF56PLEHhPwGnQQRW.webp"
+  },
+  {
+    "name": "Gift Box",
+    "slug": "Gift Box",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.18tzHD8siI5Mjs9a9o23yAcNkkvj_HQp_eSv4YF54nukf0O3yn-ZvDF54-jxSuty.webp"
+  },
+  {
+    "name": "Glasses",
+    "slug": "Glasses",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.ROmznVaHT2EUUpAjHFhC4vVfs50QlVF-kOMjAaRKjPpAuf5A69f2YE19eEpfN-M9.webp"
+  },
+  {
+    "name": "Gold",
+    "slug": "Gold",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.q9mAw_f7UFxl6t3m8EjlSJaSbeCouJyuC7vl75bKAdCXAtlIE4Tp7aIvIAyi01kL.webp"
+  },
+  {
+    "name": "Golden Scarab",
+    "slug": "Golden Scarab",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.L_LYTD83CT5zJDPALnkgK4Slq6VSGXcuup2nqxAN5ErYHBfNFFxOUnur8gw5x2oy.webp"
+  },
+  {
+    "name": "Grape",
+    "slug": "Grape",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.v4RQmSytouBrgByXuTqihp1RI7KKIt-GjUkrn0TZXIyMTSm5dQ9riTR2kSvt8_bK.webp"
+  },
+  {
+    "name": "Grenade",
+    "slug": "Grenade",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.gLKfHK1mjULrs8aJ_mPy78cbAOK4P76NcWCdkYYDZKhAhXDSs34ZmEb4DKnoJk-8.webp"
+  },
+  {
+    "name": "Hamburger",
+    "slug": "Hamburger",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.F95ysxJBvqwATHK0yDQBPK4PQ4wgEMqz_MJ_ouqIPWA7UwoSJSdVrv1b11FZS6ey.webp"
+  },
+  {
+    "name": "Hammerhead",
+    "slug": "Hammerhead",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.oeX_MnR_ZTU6CewEwSBuDx5ySChxBXEGM3VoV1eklhuoxEX8VRfooGjk8LyS_qPp.webp"
+  },
+  {
+    "name": "Hand of God",
+    "slug": "Hand of God",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.m70gOlvoNdBMsowTFzOAKr4e4HjyPm3Q9xrCzqRAnS6llgknCRyM9qGKrTeOlbw8.webp"
+  },
+  {
+    "name": "Heart",
+    "slug": "Heart",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.yn58nsDGnK4HkwrJzTFy5zO6RM9bZanvXdI4-Eeprq74-Q2sPa-LgheHZeoaL_iS.webp"
+  },
+  {
+    "name": "Hedgehog",
+    "slug": "Hedgehog",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.NRsxqui4MlQx_drrxJsTAJeCuZeskDY5HSQNmtpbAB42SvaLCw_84rFvPWNGlSQ8.webp"
+  },
+  {
+    "name": "High Heels",
+    "slug": "High Heels",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.4xjrktCCiaXT0RyQctwZ-FRhJ3nHnQLVmDd-OH5TiFMLKn3LhquY7Fmcks2REzzn.webp"
+  },
+  {
+    "name": "Hippo",
+    "slug": "Hippo",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.C3FaEcXU915JUG2oUeMy5YXsLueQNl_2yByMeoy0bFqYPcka8N_mlF7iHMP_J8lv.webp"
+  },
+  {
+    "name": "Illuminati",
+    "slug": "Illuminati",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.2gOQaKcOMX_49IMs9S4UxgS_RJCO9_L0bnmyzhKivQ7p5qO03A_2JAJvnajc_tqW.webp"
+  },
+  {
+    "name": "Inca Sun",
+    "slug": "Inca Sun",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.XvioOLpF0xJfJuho55RTFRISua_5BkJWfnMQYDTxIHTMIuW2CWyzz_MYyTZ-mcvq.webp"
+  },
+  {
+    "name": "Inguz Rune",
+    "slug": "Inguz Rune",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.iRqphfYHYdb-G6_VfW-ZFwuXUnya9Suv7fZiVXcaVILy63PKTCMph9tfdRocBnUH.webp"
+  },
+  {
+    "name": "Ink Pen",
+    "slug": "Ink Pen",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.0hGef0PdaAaXKDeRxiU8XPaz6z--rtrgjYKs3t_HOyqJPpT-ZnihEZHhTBtloaiQ.webp"
+  },
+  {
+    "name": "Jellyfish",
+    "slug": "Jellyfish",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.ffpBYx23dTuKNUz_B4siMgpnSFHng24DZQtXN5GyExakwHz-7Z9dHoY56SiGuaNt.webp"
+  },
+  {
+    "name": "Jumbo Pencil",
+    "slug": "Jumbo Pencil",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.pAeuK0e4_STV2hXJhIfuLoqhEUoYHjeVH5r1uoa9kbICdp7k45BEGz1MPeqBdipl.webp"
+  },
+  {
+    "name": "Key",
+    "slug": "Key",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.17LZczwBBaQgrPYGu84GX8U9CanWlc7XqmgHygz4bto1vHiYeNmwJIFG_rBfHWYW.webp"
+  },
+  {
+    "name": "Kitsune",
+    "slug": "Kitsune",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.FTEad_LwgTZvtD_U07EPsEmAJafIn0g7JfqkwLlybJNAXKyzDgZdoKIH-hnzDQzz.webp"
+  },
+  {
+    "name": "Knight",
+    "slug": "Knight",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.8oIdGQALipxZ-oU2uB0jryjleLagM9DwVQVc44gpacFkZ69zHU1r3sH6-1MB5JKi.webp"
+  },
+  {
+    "name": "Koala",
+    "slug": "Koala",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.FPtg5nqH0KbCTLJqFx5ZLhle0grkxp0C3yphKdGkjnUEldWarHQsIUnBoFX7NrKl.webp"
+  },
+  {
+    "name": "Leaf",
+    "slug": "Leaf",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.vUWCdqDjyiyGQNfGktEoUvRQ74FiQn6W6imPD8_2c5-_33cM8XQkv5YRzfEC4DwR.webp"
+  },
+  {
+    "name": "Lemon",
+    "slug": "Lemon",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.01A6XqH3tzaUIqBBKuuSNaY4ELaR6DxKrP9P34WkOn7bNkX4RCnfqqRFSP56g7-g.webp"
+  },
+  {
+    "name": "Light Bulb",
+    "slug": "Light Bulb",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.0G2RTwGwJ_PMYAwLNHa_nqabAQ6lB3GtYMaw6YobEbhU9qYVvTOmwimFp-dW2fv1.webp"
+  },
+  {
+    "name": "Lily",
+    "slug": "Lily",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.vUwzZHH48xAgQ8kGr386YfR95Cw-XbSwHXR-SuyRsZ4wbTSNpGzen1jTGPG-_-WF.webp"
+  },
+  {
+    "name": "Lion Head",
+    "slug": "Lion Head",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.YgsaWXuOE9-amPck38_cbwXorbVguhYkEIR5ZM7EMOuw8eDletB2ncDecNLjf_63.webp"
+  },
+  {
+    "name": "Lion King",
+    "slug": "Lion King",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.Rqow3NqZYdXvctrOPpIkm6FD6eW5WLdFUFWMjqezkQE194A1CUDoFMPBgiIV7qbi.webp"
+  },
+  {
+    "name": "Love Letter",
+    "slug": "Love Letter",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.W5tDS6OC3wBTPyZZSEMADFsKYVuQdEd9LI5-5R_72IsCURasT1aiI9JzJN1eyLbv.webp"
+  },
+  {
+    "name": "Love Lock",
+    "slug": "Love Lock",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.TL_a91AQingEGzFzl0Ak3BWmZVXo5gLdtfDRptYfsWzFFWfIN5B4ekRiG__mQYS4.webp"
+  },
+  {
+    "name": "Lovely Kiss",
+    "slug": "Lovely Kiss",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.CNi-u_zUJs9tePAmu9qsoUemIYdPgqIaiFPrnvhhh1lU9vm8QpZ1NXG7rJ0252E4.webp"
+  },
+  {
+    "name": "Mafdet",
+    "slug": "Mafdet",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.55a6EQ9w-wr_eQ2UvjYzchVfL6WboVPb4KB5mQcPbULkb_hKDbuzO7oxV1H7SUoP.webp"
+  },
+  {
+    "name": "Mannaz Rune",
+    "slug": "Mannaz Rune",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.6cSCeu_hallepclrNtaLFHA5Iz7H6K0j7PgAnfu17VVcnKp-ccXipZ2ulUdS1I4S.webp"
+  },
+  {
+    "name": "Manta Ray",
+    "slug": "Manta Ray",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.OoXOp26mOTALOGcLYYM8jDoB64-akuZ74dxgCYUu7a5PP7ntKCVLFgFMTuDav53k.webp"
+  },
+  {
+    "name": "Maple",
+    "slug": "Maple",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.sVxCUbJ9-FEXD6A-lKGcuWiQuZYzBD8OL1WpG3R_VgelYAM-ULr8o3jziPfI7sQZ.webp"
+  },
+  {
+    "name": "Maple Leaf",
+    "slug": "Maple Leaf",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.IK8st-DeGkQF3e9ubdeYGcKIVkIm7trTP65lD9pjPE6dRKudgDMYpbV4J9DidW_J.webp"
+  },
+  {
+    "name": "Mask",
+    "slug": "Mask",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.GWtXLAwK8kVmvCndK60ODG8CcpDJR_03siBoD0PZaPkS-u_D7Ni7gIR8M48jRLUs.webp"
+  },
+  {
+    "name": "Mayan Moth",
+    "slug": "Mayan Moth",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.APtsYQ55F5oIi3vzfMlKeq6wM7U5d-En7ahziQ1nU7pkJNf3BSUOBhH57A5i0H2g.webp"
+  },
+  {
+    "name": "Melon",
+    "slug": "Melon",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.ucpWlKGb66yUrO8W0kcPiFceqJH9gGmZlqONgAwcE24lYF53BK5d4el2vXQTecxo.webp"
+  },
+  {
+    "name": "Money Bag",
+    "slug": "Money Bag",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.-UqnFr2vZSYRvGX73RqOvDYHVnrbtFV2fAQ2F5VFIvnAGuxgGiiJDZxdNp_av40Q.webp"
+  },
+  {
+    "name": "Monstera",
+    "slug": "Monstera",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.VPHwLrevm-3y0srZAYBhZn991rZxiJ7H4t626g0o5RZ6etThuqf1-h5O1vlVqi36.webp"
+  },
+  {
+    "name": "Moon",
+    "slug": "Moon",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.zvRyucwlkSKWYlLOzka0_GFHpKiMT9oEKqJ4h7RtsXsoN6mlTk5_wImnfYJ-0-rR.webp"
+  },
+  {
+    "name": "Moon Cross",
+    "slug": "Moon Cross",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.7GNm-UKdXOqhnmrZk_iPwvpM0_OyXt7gVCvNaO3H_147VSbbhwSV8FdX09qPcPwB.webp"
+  },
+  {
+    "name": "Moon Eagle",
+    "slug": "Moon Eagle",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.xWHugf0Cm-if24J5gK44YF7vXLxCOkZBTCtYbaDcO5Ud9KOzvJXY7vi4tRYWOkxg.webp"
+  },
+  {
+    "name": "Mountain Goat",
+    "slug": "Mountain Goat",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.jYYu41zqBIG0a42M6m8MLOTt0UXMwdzo_8XYQMsp34ybGVblLD515MFuUdAVj6mX.webp"
+  },
+  {
+    "name": "Mountain Lion",
+    "slug": "Mountain Lion",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.0HIP47aAbTGbdzPUtkXqyv3plP2KopgOgnF_p8RcerlkuBMEmChb70AvPvW5rBvK.webp"
+  },
+  {
+    "name": "Mushroom",
+    "slug": "Mushroom",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.LY4PAyR5qYJxsXXiqFxYGRLbo9sNs9v80ufRdTSsgIE8CPBRkcCnVuAFvyzmAkPW.webp"
+  },
+  {
+    "name": "Musical Note",
+    "slug": "Musical Note",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.194IXMH974Ku7Hy8VVbZ8_PDcjm4t4Bcgp5kFfYk8pbU66_b8tSqPopHoCh94B2l.webp"
+  },
+  {
+    "name": "Narcissus",
+    "slug": "Narcissus",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.0qhnVG0XEsc4yKX6ly24SXUYR4tluFaSVq3L-PSNSN9fEzINaYI7fMDYLpxDC2lC.webp"
+  },
+  {
+    "name": "Nordic Wolf",
+    "slug": "Nordic Wolf",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.7yAxbiK17nPIB55hLeya-EPfoKDYG0OjeBtHanWqXjDqWcRzgneuLZSVKqjlC1b_.webp"
+  },
+  {
+    "name": "Oak Leaf",
+    "slug": "Oak Leaf",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.SRWoJ5r43gogIHIPxDMajTcXtCfCIqOhvNEafQxKpSZ6fgOmtd-rsChbl1Lshffr.webp"
+  },
+  {
+    "name": "Octopus",
+    "slug": "Octopus",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.K1W3Z1BkzJBN4G6t-F5SwQtXdPSD0RDElHzlzU6Uxgg6VQNlt0R49zERjrxXnQoN.webp"
+  },
+  {
+    "name": "Okami Wolf",
+    "slug": "Okami Wolf",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.z_vI_1_nytZLE6c6VoxnqToOYSM7hHUVFF9-uNlHhMTb8CMOXp7MKpJnT55Bxqec.webp"
+  },
+  {
+    "name": "Ouroboros",
+    "slug": "Ouroboros",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.tp31ZJ6tZYMlZhOkH0HUjxyIXRz5L7uIUPL_bJyPd1fKecQ3_5GMUJaAErL-5HZZ.webp"
+  },
+  {
+    "name": "Owl",
+    "slug": "Owl",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.vN9j78KzwG9W22QykPfZcbsmqrVYrb-2D1jYHwMZ0xlV8cAr_JDwyoKOcZXzxMmm.webp"
+  },
+  {
+    "name": "Oxen of Fire",
+    "slug": "Oxen of Fire",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.XHjjahmSQ3CEifvjH3VUDP7ZySbpYCAm_IpN8uhLpgB4BFnECsL3smz4kmlknWrz.webp"
+  },
+  {
+    "name": "Palette",
+    "slug": "Palette",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.zhagijchaBw6BNnlr2Lc2Kn7hX-1OyeGOHqpqwoxJRaB9zkCwYjKWk6MHneJc6LC.webp"
+  },
+  {
+    "name": "Paw",
+    "slug": "Paw",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.d61Yr0EDxzKeOeRgtrYIbJAXgPFqQhY-qfZ_zjxFkOoTgt33IJjdyKHRsv1CAXxC.webp"
+  },
+  {
+    "name": "Pearl",
+    "slug": "Pearl",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.8EUCI3LLyXGuJqCfbh_8ln9IwVgzpKuGC2L7MSrncOPSbWsluoqcMj7s-grwE5-n.webp"
+  },
+  {
+    "name": "Pegasus",
+    "slug": "Pegasus",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.am3cy06vCnXXbbuGV8b0WEiBngsnx8dI8Zoslm7VfZWQus47SO_rUbZvkqWXSN-b.webp"
+  },
+  {
+    "name": "Phoenix",
+    "slug": "Phoenix",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.Mls3Z0MDOWkL7DVTvsq3xGmymTZfc-tnAhIzvev28RtMT452KNAeTCWxmgq2qw1c.webp"
+  },
+  {
+    "name": "Pickaxe",
+    "slug": "Pickaxe",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.u_6iIhhXGRY7_s3lLq9cxg9v-zYMy9OEO9t0kqoJrerkUVCwNxgkb7vEu09u_Sd3.webp"
+  },
+  {
+    "name": "Piggy Bank",
+    "slug": "Piggy Bank",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.lyRYiMrqcBxcW8swbIvMqaTfvL-fZCuXbcinjTETR5ryH-6V2F_aMLrx0D9s0bY5.webp"
+  },
+  {
+    "name": "Pineapple",
+    "slug": "Pineapple",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.OnmpfsjXAmhUGYeAMOoTuWzTpPo8hDMXS8rCXXUMTidY2eYQaxKL9v1NMAI6j52d.webp"
+  },
+  {
+    "name": "Pizza Slice",
+    "slug": "Pizza Slice",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.aNHooZCW3YIWE7mTkxPaDcT4pmeSSxGnDTKG8Yez32eQ_082opPUwTA4g72OGl5i.webp"
+  },
+  {
+    "name": "Piñata",
+    "slug": "Piñata",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.DrsqdiM5sQqqQuc2L1MNXOhbl8aa26BTTrpAdV4NRGecHqlq1Z0IeHjguk8JdpfN.webp"
+  },
+  {
+    "name": "Plume",
+    "slug": "Plume",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.uQFRjSCV3iNh5BG5UQGW6FPzwFRsbKuNjYd-LXVNEG5iOxK8zkLZoAiwbRsqQ5sg.webp"
+  },
+  {
+    "name": "Polar Bear",
+    "slug": "Polar Bear",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.1cg2sRzyVhycfYHXE984Tuxz0viWZ_Bqjcrd6IHfju-u6HD3lw6WkRhvPzibnHGh.webp"
+  },
+  {
+    "name": "Police Badge",
+    "slug": "Police Badge",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.G-IxVZI_H-aqQSsAxM45xY5R4Kq02XQSxs5NOuBZ9_sgQQJNXFVJEVqc1RIt5_QU.webp"
+  },
+  {
+    "name": "Pomegranate",
+    "slug": "Pomegranate",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.C3Ingn8GX_rBiVYVKvA6o3VquoLsDeahvB3DkuYS4YgLyhwnVKPXJfCTFaMqd-EZ.webp"
+  },
+  {
+    "name": "Pyramid",
+    "slug": "Pyramid",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.do74P15Yct5BJ65oEe65nxYKqdm2RXb5JYQw3Pvx3QObj8whePCwcpVbq-6OoV6M.webp"
+  },
+  {
+    "name": "Rain Drop",
+    "slug": "Rain Drop",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.NDev3G1cR7oPM4Mvuh4irS58_1tgQJe2Gtg3Cxv1Yh1vQiWEHDGTSf6vSkRuBFIV.webp"
+  },
+  {
+    "name": "Ram of Amun",
+    "slug": "Ram of Amun",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.BfqT_6zpaiT0INpikakfDaWNspQcy1YS-dSkeY1RGyc_sGgU2huouKhCWbrqhzvy.webp"
+  },
+  {
+    "name": "Rhino Warrior",
+    "slug": "Rhino Warrior",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.Cg7qh8CAa0i8nfx7FjKFvIpUVCfols-y1fr_YFxjSlyqgf8TsPaO41NDDrAGZYxp.webp"
+  },
+  {
+    "name": "Ring",
+    "slug": "Ring",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.NBUAhMbiy32V52ZkQdvEcv0LYXfuTnZLaj9PVYuRZpaHuvpaCy5xKv9XgZZH-CA8.webp"
+  },
+  {
+    "name": "Rook",
+    "slug": "Rook",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.pHvUpBoATLLJEyCxxfzcgefZNU6m2Yp2AVc8FP7Ly65GJyLUcMLBdT-mCUMEtZV2.webp"
+  },
+  {
+    "name": "Royal Crown",
+    "slug": "Royal Crown",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.qR5l-IlfPoN1kk5GeCg7UhZ__AxTMRVFfmGFrGIs3bfpkh3wr-763pZL8oM_sccV.webp"
+  },
+  {
+    "name": "Sakura",
+    "slug": "Sakura",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.O53HVLBTV9DFA3lZ4xFMdxyKM_qcapN0CKFQYItRSpwiK1PJ5oAflboc9XeWNbcA.webp"
+  },
+  {
+    "name": "Sauron",
+    "slug": "Sauron",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.gav-Pm_uxiAVUAUtRYo4Mvo4Geqc3bF5MFLVYZD2O7wctAoP1vHuraPRZ3twQOu0.webp"
+  },
+  {
+    "name": "Scarab",
+    "slug": "Scarab",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.7Y6B395U8gJndXmD2JF3Q-VIbYmn1wXDuLcjpXGm7aBsV7Ay-8I1KwlHcrKqF79W.webp"
+  },
+  {
+    "name": "Scissors",
+    "slug": "Scissors",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.Aue2nRrFax65SI8gfr3Y8cAVFRSc2jYRQNnJhS7UJGQOxLQJozVI2GKB_nGgnVKs.webp"
+  },
+  {
+    "name": "Scorpion",
+    "slug": "Scorpion",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.z0rYeB0JXMDwoGRAc-TcMs_4Iz4G5mrmc_PzHdH3FcaNL0y9FwUNGHu9dZuR_GAJ.webp"
+  },
+  {
+    "name": "Sea Jelly",
+    "slug": "Sea Jelly",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.7ZjNbFvuk1f3IYoRl5PF0Fxwuf59Rz4NUXlW0ayRrxrwEwOovdNqPxkg7-Zwno_t.webp"
+  },
+  {
+    "name": "Shark Knife",
+    "slug": "Shark Knife",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.FqoKM7ZbKkdlGEAZdQgtAdwjgAYmPp2P24QIRoFvcpzSVVhykTbpqTXKLTGr1fJo.webp"
+  },
+  {
+    "name": "Shield",
+    "slug": "Shield",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.jDoFCUiPbWd-xjw3MRTeCfcdDV2Vw6QOEBB6khSffiL68YmYfRslnIv0QQPCpxFj.webp"
+  },
+  {
+    "name": "Skull",
+    "slug": "Skull",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.ahyF5243R94DkRJZXP3UT1HPCn915fMrGwFR8eHMVq1Rv2hjM-9SNHPSmGvS8oh0.webp"
+  },
+  {
+    "name": "Smartphone",
+    "slug": "Smartphone",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.tPg4cOe3RyVkbs6fKNBBulQ8Iw_o2kEczR7VUDAuWA5MP5IiC8E_jb6PzoWJSxfV.webp"
+  },
+  {
+    "name": "Spanner",
+    "slug": "Spanner",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.R95bQGNTyZsMskvQ-NoVXZ5ZjDK8vn9xEkZWC-t2fWjw2dvl4ZS5IaDQ3eRZ2a0K.webp"
+  },
+  {
+    "name": "Sparks",
+    "slug": "Sparks",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.mxxNiLLi-hZNd-feVTAv1g2yIHHOP4JKjQHmUsyOJePSfODvOd9gcGamzg6czkPW.webp"
+  },
+  {
+    "name": "Spider Web",
+    "slug": "Spider Web",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.zqiYDU2I5rF0o0nUPC38lYn-oPgi9kqb3O0aXkxPiRegZubULItw34A2uYLW6i14.webp"
+  },
+  {
+    "name": "Spirit Impala",
+    "slug": "Spirit Impala",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.GmcOAPoVO6-3zSsSgr49PI4m6FD2NjiH-MqnYkxPOmho7eMjXb2qtZ9iVCGhNtMl.webp"
+  },
+  {
+    "name": "Sprout",
+    "slug": "Sprout",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.Qs7MNI5bI_wWt76tp3geAVREeHWVI8L2zKAvUZw7Vh4J_3jOJy7M8ykmCfbVeH7_.webp"
+  },
+  {
+    "name": "Star",
+    "slug": "Star",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.EaxdaTFbvJla35KFDBZ4wKVWY4DlOhTdx04czKQPrYW3yxkKdFDv5G4Fxzk-u2eN.webp"
+  },
+  {
+    "name": "Star Crown",
+    "slug": "Star Crown",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.2X61lUA-078NCPQ9AQhQteEU_aggETq1yqIgHnxVKIvvV2BWG184y_udV8rg6HEJ.webp"
+  },
+  {
+    "name": "Sumerian Bird",
+    "slug": "Sumerian Bird",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol._sY-_w6wHufIv_u-_TZd0xQARclBUM_5LpR6pGo7mX-sph2yPBb4htclextwQKro.webp"
+  },
+  {
+    "name": "Sun",
+    "slug": "Sun",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.16I3ZHHeOH9UEMiS1KeCxpnmAx47yU9VYa2_jNgjTyvLwU4Z364uD6c0hf7hV5-d.webp"
+  },
+  {
+    "name": "Sun Lion",
+    "slug": "Sun Lion",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.8bOZEkiROSJ8wu260t6mbQAgZatlVALaf4tclRB8AYMNOu1gNxK_Ua7xhCuQftpD.webp"
+  },
+  {
+    "name": "Sun Mountain",
+    "slug": "Sun Mountain",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.FNa5CGRDTXOU5e-_9nornNRLt0aER5VGCRcImY2KclVCFNsmagfYq6ldNomlr10C.webp"
+  },
+  {
+    "name": "Sword",
+    "slug": "Sword",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.p8ByF0uvfv9EITSgU6G6fvuTGn9o8gDpEDkLXdIWx-4GgLeE08-xM1IhYJbSIOra.webp"
+  },
+  {
+    "name": "The Eye",
+    "slug": "The Eye",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.615eyidMxX8FbjoYqTcSM4R2AjO_HG9OQ3ub2Yt8Sd7Es2EFmWBNOs76jYEUmpH5.webp"
+  },
+  {
+    "name": "Tie",
+    "slug": "Tie",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.hxOK7hsMEcDnH00HzbgoHH_LOW3eCEvFjnMqhZ6-3wzO7tZh6Qpx833DAaGq9Hz6.webp"
+  },
+  {
+    "name": "Toilet",
+    "slug": "Toilet",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.FQh-faVtb_IxBJdOx8bp9LXGS8A8KcbvJ2vT52jSeysN6G3q41znnkZ5oWZgfMtQ.webp"
+  },
+  {
+    "name": "Tooth",
+    "slug": "Tooth",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.4ceKq-8cj8iHYmzeZ3uTsPbzz_ggXiyL_7cbtTaaCzrvqGOtQgXWcwSoewsd1emo.webp"
+  },
+  {
+    "name": "Top Hat",
+    "slug": "Top Hat",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.mlP5hERxeZ6pKrQZA1zP3RRcJG9CncXpbwhPw8ud6MEdgJVTRsszolmQzR1ZkVGt.webp"
+  },
+  {
+    "name": "Totem Bear",
+    "slug": "Totem Bear",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.uxXsszRHkkuVpoeRJATcC2R9UJg0f_6kI9YJUA6SHGzsMBmEhSudKSZAOAbpcayl.webp"
+  },
+  {
+    "name": "Tree of Life",
+    "slug": "Tree of Life",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.5jd3xeHqjC9XQKws0GSXgrES-PNkEVv2otM7yS_7Bjiw_tnfXhCYAYoRLJGImoji.webp"
+  },
+  {
+    "name": "Tribal Shield",
+    "slug": "Tribal Shield",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.FmPZuIr_-poOEmd2vUBeEanpKq9AU-SyXfz7az-9rz_aGTmOg8o7We31JoXXrWNI.webp"
+  },
+  {
+    "name": "Trophy",
+    "slug": "Trophy",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.v9p9koF3S4r6tYwiesN9kS1p-SqKOnUMgNa3FI8BAr-Yo7qUSZYfnt3IfswQGlC_.webp"
+  },
+  {
+    "name": "Turkey",
+    "slug": "Turkey",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.oJduID9rTSWlax6-p5eabhKfsbleWADDmlp744msCfm6PFscOBGw86YBPB2v9QBY.webp"
+  },
+  {
+    "name": "Turtle",
+    "slug": "Turtle",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.IGnKEhvOcDPGbPvSjB57tRJnnb0JyX11lCpWhfSRi4o51NvLo212aAmCVlt9xCIr.webp"
+  },
+  {
+    "name": "Twin Peaks",
+    "slug": "Twin Peaks",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.Y-tfmP6xKtcAd5w5-km7sgHOYgJua8fnATqx4FaQoYv4eNSkZiSsMZ3HdtLbM8lJ.webp"
+  },
+  {
+    "name": "Unicorn Head",
+    "slug": "Unicorn Head",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.mGX_RWKqCi7q75UkC_3zJsj6gdK8lCqAVUDNjJbAsfCsolkErtFkzmbeZc0YFTUO.webp"
+  },
+  {
+    "name": "Venetian Mask",
+    "slug": "Venetian Mask",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.ZnYD5KzzBmUu-eecHIX9Uhs6culqVUGNRG9IYV1H2-dLtJF--ChUxj6O8LWvasye.webp"
+  },
+  {
+    "name": "Viking",
+    "slug": "Viking",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.QEfTQCiHQoHQWOQ3mGp3aAC8g57LdGqp-K_Ex2uAxLjPh6Tld7taR6ahyNnqmURU.webp"
+  },
+  {
+    "name": "Vortex",
+    "slug": "Vortex",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.RunzMRbzfapHf2L6fMBXHvPBV3L9lHOCRimRhxiajjwHOz0qezBBhh6tV0RD_Bzc.webp"
+  },
+  {
+    "name": "Wasp",
+    "slug": "Wasp",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.AW9L1B1CRblgweVyJuOb5IyFtp1myCbzz76DyXJbkgmuPdm5X4BclIqBuClNqCLd.webp"
+  },
+  {
+    "name": "White Deer",
+    "slug": "White Deer",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.mnXhrQRS2xZKNrc74yVramoh4djHWa4HYKIKWmZ1gCBcNOiHVvq9r2_-EQ6ASm1t.webp"
+  },
+  {
+    "name": "Wolf Rage",
+    "slug": "Wolf Rage",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.mtyTp7LRipSJbl-sK2r0H7sMNUilJz4qh-PxnYRq9TmNUkoUDw3-77iCbYnOLj53.webp"
+  },
+  {
+    "name": "Wreath",
+    "slug": "Wreath",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.DUxxnXfWyD_kskJUqGT2DWW7G3cya7Xj6wOrTPD7-CYTutJihFArDGgaLr3Eqcxf.webp"
+  },
+  {
+    "name": "Yogi Shaman",
+    "slug": "Yogi Shaman",
+    "icon": "https://fragment.com/file/gifts/astralshard/symbol.9NB8chBIqmZvW0AWYKOhgYFSDg4T8J-xzgEuY632pnii1mm4y5O2r7zF45F51S1m.webp"
+  }
+]
