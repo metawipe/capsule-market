@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Float, DateTime, ForeignKey, Text, Boolean
+from sqlalchemy import Column, Integer, BigInteger, String, Float, DateTime, ForeignKey, Text, Boolean
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from database import Base
@@ -7,7 +7,7 @@ class User(Base):
     __tablename__ = "users"
     
     id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, unique=True, index=True, nullable=False)  # Telegram user ID
+    user_id = Column(BigInteger, unique=True, index=True, nullable=False)  # Telegram user ID (может быть большим числом)
     wallet_address = Column(String(255), nullable=True)  # TON wallet address
     balance_ton = Column(Float, default=0.0, nullable=False)
     balance_stars = Column(Integer, default=0, nullable=False)
@@ -27,7 +27,7 @@ class UserGift(Base):
     __tablename__ = "user_gifts"
     
     id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, ForeignKey("users.user_id"), nullable=False)
+    user_id = Column(BigInteger, ForeignKey("users.user_id"), nullable=False)
     gift_id = Column(String(255), nullable=False)  # ID подарка из gifts.json
     gift_name = Column(String(255), nullable=False)
     gift_preview = Column(Text, nullable=True)  # URL превью
@@ -42,7 +42,7 @@ class Transaction(Base):
     __tablename__ = "transactions"
     
     id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, ForeignKey("users.user_id"), nullable=False)
+    user_id = Column(BigInteger, ForeignKey("users.user_id"), nullable=False)
     transaction_type = Column(String(50), nullable=False)  # 'deposit', 'purchase', 'withdraw'
     amount = Column(Float, nullable=False)
     currency = Column(String(10), default='TON')  # 'TON' or 'STARS'

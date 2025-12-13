@@ -44,6 +44,28 @@ else:
 try:
     Base.metadata.create_all(bind=engine)
     print("✅ База данных инициализирована")
+    
+    # Миграция: обновляем user_id на BigInteger если используется PostgreSQL
+    if DATABASE_URL.startswith('postgresql'):
+        try:
+            from sqlalchemy import text
+            with engine.connect() as conn:
+                # Проверяем текущий тип user_id
+                result = conn.execute(text("""
+                    SELECT data_type 
+                    FROM information_schema.columns 
+                    WHERE table_name = 'users' AND column_name = 'user_id'
+                """))
+                row = result.fetchone()
+                if row and row[0] == 'integer':
+                    print("🔄 Обновление user_id на BigInteger...")
+                    conn.execute(text("ALTER TABLE users ALTER COLUMN user_id TYPE BIGINT"))
+                    conn.execute(text("ALTER TABLE user_gifts ALTER COLUMN user_id TYPE BIGINT"))
+                    conn.execute(text("ALTER TABLE transactions ALTER COLUMN user_id TYPE BIGINT"))
+                    conn.commit()
+                    print("✅ Миграция user_id завершена")
+        except Exception as e:
+            print(f"⚠️ Ошибка миграции (возможно уже выполнена): {e}")
 except Exception as e:
     print(f"⚠️ Ошибка инициализации БД: {e}")
 
