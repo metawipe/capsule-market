@@ -61,7 +61,7 @@ export function BalanceModal({ isOpen, onClose }: BalanceModalProps) {
     if (!canDepositStars) return
     hapticLight()
     
-    const starsLink = `https://t.me/godlypaybot?start=stars_${Math.round(amountValue)}`
+    const starsLink = `https://t.me/CapsulePayBot?start=stars_${Math.round(amountValue)}`
     
     if (window.Telegram?.WebApp?.openTelegramLink) {
       window.Telegram.WebApp.openTelegramLink(starsLink)
