@@ -1,14 +1,10 @@
-"""
-Telegram бот для администрирования базы данных
-Позволяет управлять балансами, просматривать пользователей и т.д.
-"""
 import os
 import sys
 import asyncio
 from typing import Optional
 from datetime import datetime
 
-from telegram import Update
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler, filters
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -105,7 +101,17 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     
     if not is_admin(user_id):
-        await update.message.reply_text("❌ У вас нет доступа к этому боту.")
+        # Создаем инлайн кнопки
+        keyboard = [
+            [InlineKeyboardButton("Open Capsule", web_app={"url": "https://capsule-market.web.app"})],
+            [InlineKeyboardButton("Join the community", url="https://t.me/CapsuleMarket")]
+        ]
+        reply_markup = InlineKeyboardMarkup(keyboard)
+        
+        await update.message.reply_text(
+            "Welcome to Capsule! Discover, trade, and collect unique digital gifts in our marketplace. Start exploring now!",
+            reply_markup=reply_markup
+        )
         return
     
     await update.message.reply_text(
