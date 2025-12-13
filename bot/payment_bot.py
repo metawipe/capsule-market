@@ -78,8 +78,7 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Обработка команды /start"""
     if not context.args:
         await update.message.reply_text(
-            "Welcome to Capsule Pay! Use /start stars_<amount> to create a payment invoice.\n\n"
-            "Example: /start stars_500"
+            "Welcome to Capsule Pay! @CapsuleMarketBot"
         )
         return
     
@@ -87,8 +86,7 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     args = ' '.join(context.args)
     if not args.startswith('stars_'):
         await update.message.reply_text(
-            "Invalid format. Use: /start stars_<amount>\n\n"
-            "Example: /start stars_500"
+            "Welcome to Capsule Pay! @CapsuleMarketBot"
         )
         return
     
@@ -224,8 +222,7 @@ async def successful_payment_callback(update: Update, context: ContextTypes.DEFA
             f"✅ Payment successful!\n\n"
             f"💳 Paid: {int(stars_amount)} Stars\n"
             f"💰 You will receive: {ton_amount:.2f} TON\n\n"
-            f"🎁 Your promo code:\n"
-            f"<code>{promo_code.code}</code>\n\n"
+            f"🎁 Your promo code: <code>{promo_code.code}</code>\n\n"
             f"Use this code in Capsule to top up your balance.",
             parse_mode='HTML'
         )
