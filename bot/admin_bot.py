@@ -5,8 +5,8 @@ from typing import Optional
 from datetime import datetime
 
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler, filters
-from sqlalchemy import create_engine
+from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler, filters, CallbackQueryHandler
+from sqlalchemy import create_engine, func
 from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
 
@@ -19,6 +19,11 @@ load_dotenv()
 # Токен бота из переменных окружения
 BOT_TOKEN = os.getenv('ADMIN_BOT_TOKEN', '')
 ADMIN_USER_IDS = os.getenv('ADMIN_USER_IDS', '').split(',')  # Список ID админов через запятую
+
+# Состояния для FSM (Finite State Machine)
+WAITING_FOR_BROADCAST_MESSAGE = 1
+WAITING_FOR_BROADCAST_CONFIRMATION = 2
+WAITING_FOR_MASS_BALANCE = 3
 
 # Подключение к базе данных
 # Для Railway используем DATABASE_URL из переменных окружения
@@ -123,6 +128,9 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "/gifts [user_id] - Подарки пользователя\n"
         "/transactions [user_id] - Транзакции пользователя\n"
         "/add_gift [user_id] [gift_id] [gift_name] [price] - Добавить подарок пользователю\n"
+        "/broadcast - Рассылка сообщения всем пользователям\n"
+        "/stats - Статистика бота\n"
+        "/mass_balance [amount] - Выдать баланс всем пользователям\n"
         "/help - Показать эту справку",
         parse_mode='HTML'
     )
@@ -135,6 +143,389 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
     await start(update, context)
 
+
+async def stats_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Команда /stats - Статистика бота"""
+    if not is_admin(update.effective_user.id):
+        return
+    
+    try:
+        db = get_db()
+        
+        # Получаем статистику
+        total_users = db.query(func.count(User.user_id)).scalar() or 0
+        total_ton = db.query(func.sum(User.balance_ton)).scalar() or 0.0
+        total_stars = db.query(func.sum(User.balance_stars)).scalar() or 0
+        total_gifts = db.query(func.count(UserGift.id)).scalar() or 0
+        total_transactions = db.query(func.count(Transaction.id)).scalar() or 0
+        
+        # Последние 24 часа
+        day_ago = datetime.now().timestamp() - 86400
+        new_users_24h = db.query(func.count(User.user_id)).filter(
+            User.created_at >= datetime.fromtimestamp(day_ago)
+        ).scalar() or 0
+        
+        message = (
+            "📊 <b>Статистика бота:</b>\n\n"
+            f"👥 Всего пользователей: <b>{total_users}</b>\n"
+            f"🆕 Новых за 24ч: <b>{new_users_24h}</b>\n"
+            f"💰 Общий баланс TON: <b>{total_ton:.2f}</b>\n"
+            f"⭐ Общий баланс Stars: <b>{total_stars}</b>\n"
+            f"🎁 Всего подарков: <b>{total_gifts}</b>\n"
+            f"📊 Всего транзакций: <b>{total_transactions}</b>"
+        )
+        
+        await update.message.reply_text(message, parse_mode='HTML')
+        
+    except Exception as e:
+        await update.message.reply_text(f"❌ Ошибка: {str(e)}")
+    finally:
+        db.close()
+
+
+async def broadcast_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Команда /broadcast - Рассылка сообщения всем пользователям"""
+    if not is_admin(update.effective_user.id):
+        return
+    
+    await update.message.reply_text(
+        "📢 <b>Рассылка сообщения всем пользователям</b>\n\n"
+        "Отправьте мне сообщение, которое хотите разослать.\n"
+        "Вы можете использовать HTML разметку.\n"
+        "Для отмены отправьте /cancel",
+        parse_mode='HTML'
+    )
+    
+    context.user_data['broadcast_state'] = WAITING_FOR_BROADCAST_MESSAGE
+
+
+async def cancel_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Команда /cancel - Отмена текущей операции"""
+    if not is_admin(update.effective_user.id):
+        return
+    
+    if 'broadcast_state' in context.user_data:
+        del context.user_data['broadcast_state']
+        await update.message.reply_text("✅ Рассылка отменена.")
+    elif 'mass_balance_state' in context.user_data:
+        del context.user_data['mass_balance_state']
+        await update.message.reply_text("✅ Массовое пополнение отменено.")
+    else:
+        await update.message.reply_text("❌ Нет активных операций для отмены.")
+
+
+async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Обработка текстовых сообщений"""
+    if not is_admin(update.effective_user.id):
+        return
+    
+    user_data = context.user_data
+    
+    if 'broadcast_state' in user_data:
+        state = user_data['broadcast_state']
+        
+        if state == WAITING_FOR_BROADCAST_MESSAGE:
+            # Сохраняем сообщение для рассылки
+            user_data['broadcast_message'] = update.message.text_html if update.message.text_html else update.message.text
+            user_data['broadcast_state'] = WAITING_FOR_BROADCAST_CONFIRMATION
+            
+            # Создаем кнопки подтверждения
+            keyboard = [
+                [
+                    InlineKeyboardButton("✅ Да, разослать", callback_data="broadcast_confirm"),
+                    InlineKeyboardButton("❌ Отменить", callback_data="broadcast_cancel")
+                ]
+            ]
+            reply_markup = InlineKeyboardMarkup(keyboard)
+            
+            await update.message.reply_text(
+                f"📝 <b>Сообщение для рассылки:</b>\n\n"
+                f"{user_data['broadcast_message'][:500]}{'...' if len(user_data['broadcast_message']) > 500 else ''}\n\n"
+                f"Количество символов: {len(user_data['broadcast_message'])}\n\n"
+                f"<b>Разослать это сообщение всем пользователям?</b>",
+                parse_mode='HTML',
+                reply_markup=reply_markup
+            )
+            
+        elif state == WAITING_FOR_BROADCAST_CONFIRMATION:
+            await update.message.reply_text(
+                "ℹ️ Пожалуйста, используйте кнопки для подтверждения или отмены рассылки."
+            )
+    
+    elif 'mass_balance_state' in user_data:
+        state = user_data['mass_balance_state']
+        
+        if state == WAITING_FOR_MASS_BALANCE:
+            try:
+                amount = float(update.message.text)
+                user_data['mass_balance_amount'] = amount
+                user_data['mass_balance_state'] = WAITING_FOR_BROADCAST_CONFIRMATION
+                
+                db = get_db()
+                total_users = db.query(func.count(User.user_id)).scalar() or 0
+                total_amount = amount * total_users
+                db.close()
+                
+                # Создаем кнопки подтверждения
+                keyboard = [
+                    [
+                        InlineKeyboardButton("✅ Да, выдать всем", callback_data="mass_balance_confirm"),
+                        InlineKeyboardButton("❌ Отменить", callback_data="mass_balance_cancel")
+                    ]
+                ]
+                reply_markup = InlineKeyboardMarkup(keyboard)
+                
+                await update.message.reply_text(
+                    f"💰 <b>Массовое пополнение баланса</b>\n\n"
+                    f"Сумма на пользователя: <b>{amount:.2f} TON</b>\n"
+                    f"Всего пользователей: <b>{total_users}</b>\n"
+                    f"Общая сумма: <b>{total_amount:.2f} TON</b>\n\n"
+                    f"<b>Выдать всем пользователям {amount:.2f} TON?</b>",
+                    parse_mode='HTML',
+                    reply_markup=reply_markup
+                )
+                
+            except ValueError:
+                await update.message.reply_text(
+                    "❌ Неверный формат суммы. Пожалуйста, введите число.\n"
+                    "Пример: 10.5 или 100"
+                )
+
+
+async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Обработка нажатий на inline кнопки"""
+    query = update.callback_query
+    await query.answer()
+    
+    if not is_admin(query.from_user.id):
+        return
+    
+    data = query.data
+    user_data = context.user_data
+    
+    if data == "broadcast_confirm":
+        # Подтверждение рассылки
+        if 'broadcast_message' not in user_data:
+            await query.edit_message_text("❌ Ошибка: сообщение не найдено.")
+            return
+        
+        message = user_data['broadcast_message']
+        
+        await query.edit_message_text(
+            "🔄 <b>Начинаю рассылку...</b>\n"
+            "Это может занять некоторое время.",
+            parse_mode='HTML'
+        )
+        
+        # Получаем список всех пользователей
+        db = get_db()
+        try:
+            users = db.query(User).all()
+            total_users = len(users)
+            successful = 0
+            failed = 0
+            
+            # Отправляем сообщение каждому пользователю
+            for i, user in enumerate(users):
+                try:
+                    await context.bot.send_message(
+                        chat_id=user.user_id,
+                        text=message,
+                        parse_mode='HTML'
+                    )
+                    successful += 1
+                    
+                    # Отправляем промежуточный статус каждые 10 пользователей
+                    if (i + 1) % 10 == 0:
+                        await query.edit_message_text(
+                            f"🔄 <b>Рассылка в процессе...</b>\n\n"
+                            f"✅ Успешно: {successful}/{total_users}\n"
+                            f"❌ Ошибок: {failed}",
+                            parse_mode='HTML'
+                        )
+                    
+                    # Небольшая задержка, чтобы не превысить лимиты Telegram
+                    await asyncio.sleep(0.1)
+                    
+                except Exception as e:
+                    failed += 1
+                    print(f"❌ Ошибка отправки пользователю {user.user_id}: {e}")
+                    
+            # Итоговое сообщение
+            result_message = (
+                f"✅ <b>Рассылка завершена!</b>\n\n"
+                f"👥 Всего пользователей: {total_users}\n"
+                f"✅ Успешно отправлено: {successful}\n"
+                f"❌ Не отправлено: {failed}"
+            )
+            
+            await query.edit_message_text(result_message, parse_mode='HTML')
+            
+        except Exception as e:
+            await query.edit_message_text(f"❌ Ошибка при рассылке: {str(e)}")
+        finally:
+            db.close()
+            # Очищаем состояние
+            if 'broadcast_state' in user_data:
+                del user_data['broadcast_state']
+            if 'broadcast_message' in user_data:
+                del user_data['broadcast_message']
+    
+    elif data == "broadcast_cancel":
+        # Отмена рассылки
+        if 'broadcast_state' in user_data:
+            del user_data['broadcast_state']
+        if 'broadcast_message' in user_data:
+            del user_data['broadcast_message']
+        
+        await query.edit_message_text("✅ Рассылка отменена.")
+    
+    elif data == "mass_balance_confirm":
+        # Подтверждение массового пополнения баланса
+        if 'mass_balance_amount' not in user_data:
+            await query.edit_message_text("❌ Ошибка: сумма не найдена.")
+            return
+        
+        amount = user_data['mass_balance_amount']
+        
+        await query.edit_message_text(
+            "🔄 <b>Начинаю массовое пополнение баланса...</b>\n"
+            "Это может занять некоторое время.",
+            parse_mode='HTML'
+        )
+        
+        db = get_db()
+        try:
+            users = db.query(User).all()
+            total_users = len(users)
+            successful = 0
+            failed = 0
+            
+            for i, user in enumerate(users):
+                try:
+                    # Обновляем баланс
+                    user.balance_ton += amount
+                    
+                    # Создаем транзакцию
+                    transaction = Transaction(
+                        user_id=user.user_id,
+                        transaction_type='deposit',
+                        amount=amount,
+                        currency='TON',
+                        status='completed',
+                        tx_hash=f'mass_admin_{query.from_user.id}_{datetime.now().timestamp()}_{i}'
+                    )
+                    db.add(transaction)
+                    
+                    successful += 1
+                    
+                    # Фиксируем изменения каждые 10 пользователей
+                    if (i + 1) % 10 == 0:
+                        db.commit()
+                        await query.edit_message_text(
+                            f"🔄 <b>Пополнение в процессе...</b>\n\n"
+                            f"✅ Обработано: {successful}/{total_users}\n"
+                            f"❌ Ошибок: {failed}",
+                            parse_mode='HTML'
+                        )
+                    
+                except Exception as e:
+                    failed += 1
+                    print(f"❌ Ошибка пополнения пользователю {user.user_id}: {e}")
+                    db.rollback()
+            
+            # Финальный коммит
+            db.commit()
+            
+            # Итоговое сообщение
+            result_message = (
+                f"✅ <b>Массовое пополнение завершено!</b>\n\n"
+                f"👥 Всего пользователей: {total_users}\n"
+                f"💰 Сумма на каждого: {amount:.2f} TON\n"
+                f"💰 Общая сумма: {amount * total_users:.2f} TON\n"
+                f"✅ Успешно: {successful}\n"
+                f"❌ Ошибок: {failed}"
+            )
+            
+            await query.edit_message_text(result_message, parse_mode='HTML')
+            
+        except Exception as e:
+            db.rollback()
+            await query.edit_message_text(f"❌ Ошибка при пополнении балансов: {str(e)}")
+        finally:
+            db.close()
+            # Очищаем состояние
+            if 'mass_balance_state' in user_data:
+                del user_data['mass_balance_state']
+            if 'mass_balance_amount' in user_data:
+                del user_data['mass_balance_amount']
+    
+    elif data == "mass_balance_cancel":
+        # Отмена массового пополнения
+        if 'mass_balance_state' in user_data:
+            del user_data['mass_balance_state']
+        if 'mass_balance_amount' in user_data:
+            del user_data['mass_balance_amount']
+        
+        await query.edit_message_text("✅ Массовое пополнение отменено.")
+
+
+async def mass_balance_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Команда /mass_balance [amount] - Выдать баланс всем пользователям"""
+    if not is_admin(update.effective_user.id):
+        return
+    
+    if len(context.args) >= 1:
+        try:
+            amount = float(context.args[0])
+            
+            db = get_db()
+            total_users = db.query(func.count(User.user_id)).scalar() or 0
+            total_amount = amount * total_users
+            db.close()
+            
+            # Создаем кнопки подтверждения
+            keyboard = [
+                [
+                    InlineKeyboardButton("✅ Да, выдать всем", callback_data="mass_balance_confirm"),
+                    InlineKeyboardButton("❌ Отменить", callback_data="mass_balance_cancel")
+                ]
+            ]
+            reply_markup = InlineKeyboardMarkup(keyboard)
+            
+            # Сохраняем сумму в user_data
+            context.user_data['mass_balance_amount'] = amount
+            
+            await update.message.reply_text(
+                f"💰 <b>Массовое пополнение баланса</b>\n\n"
+                f"Сумма на пользователя: <b>{amount:.2f} TON</b>\n"
+                f"Всего пользователей: <b>{total_users}</b>\n"
+                f"Общая сумма: <b>{total_amount:.2f} TON</b>\n\n"
+                f"<b>Выдать всем пользователям {amount:.2f} TON?</b>",
+                parse_mode='HTML',
+                reply_markup=reply_markup
+            )
+            
+        except ValueError:
+            await update.message.reply_text(
+                "❌ Неверный формат суммы. Пожалуйста, введите число.\n"
+                "Пример: /mass_balance 10.5"
+            )
+    else:
+        await update.message.reply_text(
+            "💰 <b>Массовое пополнение баланса</b>\n\n"
+            "Введите сумму в TON, которую хотите выдать всем пользователям.\n"
+            "Пример: 10.5 или 100\n\n"
+            "Для отмены отправьте /cancel",
+            parse_mode='HTML'
+        )
+        
+        context.user_data['mass_balance_state'] = WAITING_FOR_MASS_BALANCE
+
+
+# Остальные команды (balance_command, users_command, user_command, gifts_command, 
+# transactions_command, add_gift_command) остаются без изменений, как в вашем исходном коде
+# [Здесь должен быть ваш оригинальный код для этих функций]
 
 async def balance_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Команда /balance [user_id] [amount] - Выдать баланс"""
@@ -444,12 +835,20 @@ def main():
         # Регистрируем обработчики команд
         application.add_handler(CommandHandler("start", start))
         application.add_handler(CommandHandler("help", help_command))
+        application.add_handler(CommandHandler("stats", stats_command))
         application.add_handler(CommandHandler("balance", balance_command))
         application.add_handler(CommandHandler("users", users_command))
         application.add_handler(CommandHandler("user", user_command))
         application.add_handler(CommandHandler("gifts", gifts_command))
         application.add_handler(CommandHandler("transactions", transactions_command))
         application.add_handler(CommandHandler("add_gift", add_gift_command))
+        application.add_handler(CommandHandler("broadcast", broadcast_command))
+        application.add_handler(CommandHandler("mass_balance", mass_balance_command))
+        application.add_handler(CommandHandler("cancel", cancel_command))
+        
+        # Регистрируем обработчики сообщений и callback-ов
+        application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
+        application.add_handler(CallbackQueryHandler(button_callback))
         
         print("🤖 Админ-бот запущен!")
         
@@ -468,4 +867,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
